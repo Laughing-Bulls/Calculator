@@ -1,3 +1,5 @@
+""" This is the my Python calculator"""
+
 class Calculator:
     """ This is the Calculator class"""
 
