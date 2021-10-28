@@ -1,5 +1,6 @@
 # Calculator Project Setup
-[![Build Status](https://app.travis-ci.com/kaw393939/calc2.svg?branch=main)](https://app.travis-ci.com/kaw393939/calc2)
+[![Build Status](https://app.travis-ci.com/Laughing-Bulls/Calculator.svg?branch=main)](https://app.travis-ci.com/Laughing-Bulls/Calculator)
+Minor edits - missing docstring
 
 Run Pip Install
 pip install -r requirements.txt
