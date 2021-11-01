@@ -1,68 +1,46 @@
-""" This is a Python calculator"""
+""" This is a script to run the Python calculator"""
+from calculator.calculator import Calculator
 
+print("Welcome to the calculator!")
+while True:
+    try:
+        value_a = float(input("Enter value a: "))
+        break
+    except ValueError:
+        print("That is not a valid number")
 
-class Calculator:
-    """ This is the Calculator class"""
+valid_operands = ["+", "-", "*", "/", "^"]
+operand = input("Enter a function (+,-,*,/,^): ")
+if operand not in valid_operands:
+    raise Exception("That is not a valid function")
 
-    def add_numbers(self, value_a, value_b):
-        """ adds two numbers"""
-        return value_a + value_b
+while True:
+    try:
+        value_b = float(input("Enter value b: "))
+        break
+    except ValueError:
+        print("That is not a valid number")
 
-    def subtract_numbers(self, value_a, value_b):
-        """ subtract numbers"""
-        return value_a - value_b
+if operand == "+":
+    answer = Calculator.add_numbers(value_a, value_b)
+    print(str(value_a) + " + " + str(value_b) + " = " + str(answer))
 
-    def multiply_numbers(self, value_a, value_b):
-        """ multiply two numbers and store the result"""
-        return value_a * value_b
+if operand == "-":
+    answer = Calculator.subtract_numbers(value_a, value_b)
+    print(str(value_a) + " - " + str(value_b) + " = " + str(answer))
 
-    def divide_numbers(self, value_a, value_b):
-        """ divide two numbers and store the result"""
-        try:
-            return value_a / value_b
-        except ZeroDivisionError:
-            print("Division by zero is not allowed")
+if operand == "*":
+    answer = Calculator.multiply_numbers(value_a, value_b)
+    print(str(value_a) + " * " + str(value_b) + " = " + str())
 
-    def power_numbers(self, value_a, value_b):
-        """ compute one number to the power of another and store the result"""
-        return value_a ** value_b
+if operand == "/":
+    if value_b == 0:
+        raise Exception("Division by zero is not allowed")
+    answer = Calculator.divide_numbers(value_a, value_b)
+    print(str(value_a) + " / " + str(value_b) + " = " + str(answer))
 
-    print("Welcome to the calculator!")
-    while True:
-        try:
-            value_a = float(input("Enter value a: "))
-            break
-        except ValueError:
-            print("That is not a valid number")
+if operand == "^":
+    answer = Calculator.power_numbers(value_a, value_b)
+    print(str(value_a) + "^" + str(value_b) + " = " + str(answer))
 
-    valid_operands = ["+", "-", "*", "/", "^"]
-    operand = input("Enter a function (+,-,*,/,^): ")
-    if operand not in valid_operands:
-        raise Exception("That is not a valid function")
-
-    while True:
-        try:
-            value_b = float(input("Enter value b: "))
-            break
-        except ValueError:
-            print("That is not a valid number")
-
-    if operand == "+":
-        print(str(value_a) + " + " + str(value_b) + " = " + str(add_numbers(value_a, value_b)))
-
-    if operand == "-":
-        print(str(value_a) + " - " + str(value_b) + " = " + str(subtract_numbers(value_a, value_b)))
-
-    if operand == "*":
-        print(str(value_a) + " * " + str(value_b) + " = " + str(multiply_numbers(value_a, value_b)))
-
-    if operand == "/":
-        if value_b == "0":
-            raise Exception("Division by zero is not allowed")
-        else:
-            print(str(value_a) + " / " + str(value_b) + " = " + str(divide_numbers(value_a, value_b)))
-
-    if operand == "^":
-        print(str(value_a) + "^" + str(value_b) + " = " + str(power_numbers(value_a, value_b)))
-
-    print("That's all, Folks!")
+print("That's all, Folks!")
