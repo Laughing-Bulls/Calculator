@@ -1,13 +1,43 @@
 """Testing the Calculator"""
 import pytest
+# import pprint
 
 from calculator.calculator import Calculator
 
 
-def test_calculator_add():
+@pytest.fixture
+def zero_history():
+    """# THis FIXTURE will clear the history"""
+    # Runs each time it is passed to a test
+    Calculator.clear_history()
+
+
+def test_clear_history(zero_history):
+    """ Testing that History cache has been cleared"""
+    assert Calculator.add_numbers(2, 2) == 4
+    assert Calculator.add_numbers(3, 3) == 6
+    assert Calculator.add_numbers(5, 2) == 7
+    assert Calculator.clear_history() is True
+    assert Calculator.count_history() == 0
+
+
+def test_calculator_add(zero_history):
     """Testing the Add function of the calculator"""
     # Arrange by calling the calc method and Assert that results are correct
     assert Calculator.add_numbers(2, 2) == 4
+    assert Calculator.add_numbers(3, 3) == 6
+    assert Calculator.add_numbers(5, 2) == 7
+    assert Calculator.count_history() == 3
+
+
+def test_first_and_last_result():
+    """Testing the Add function of the calculator"""
+    # Arrange by calling the calc method and Assert that results are correct
+    assert Calculator.add_numbers(2, 2) == 4
+    assert Calculator.add_numbers(3, 3) == 6
+    assert Calculator.add_numbers(5, 2) == 7
+    assert Calculator.get_first_result() == 4
+    assert Calculator.get_history_result() == 7
 
 
 def test_calculator_subtract():
