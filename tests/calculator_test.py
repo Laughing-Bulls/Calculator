@@ -6,14 +6,14 @@ from calculator.calculator import Calculator
 
 
 @pytest.fixture
-def zero_history():
-    """# THis FIXTURE will clear the history"""
-    # Runs each time it is passed to a test
+def zero_history_fixture():
+    """ This FIXTURE will clear the history cache"""
+    # This runs each time it is passed to a test
     Calculator.clear_history()
 
 
-def test_clear_history(zero_history):
-    """ Testing that History cache has been cleared"""
+def test_clear_history(zero_history_fixture):
+    """ Testing that history cache has been cleared"""
     assert Calculator.add_numbers(2, 2) == 4
     assert Calculator.add_numbers(3, 3) == 6
     assert Calculator.add_numbers(5, 2) == 7
@@ -21,8 +21,8 @@ def test_clear_history(zero_history):
     assert Calculator.count_history() == 0
 
 
-def test_calculator_add(zero_history):
-    """Testing the Add function of the calculator"""
+def test_calculator_add(zero_history_fixture):
+    """Testing the Add function of the calculator AND the count in history cache"""
     # Arrange by calling the calc method and Assert that results are correct
     assert Calculator.add_numbers(2, 2) == 4
     assert Calculator.add_numbers(3, 3) == 6
@@ -30,8 +30,8 @@ def test_calculator_add(zero_history):
     assert Calculator.count_history() == 3
 
 
-def test_first_and_last_result():
-    """Testing the Add function of the calculator"""
+def test_first_and_last_result(zero_history_fixture):
+    """Testing the get first and last history results"""
     # Arrange by calling the calc method and Assert that results are correct
     assert Calculator.add_numbers(2, 2) == 4
     assert Calculator.add_numbers(3, 3) == 6
@@ -62,5 +62,5 @@ def test_calculator_dividebyzero():
 
 
 def test_calculator_power():
-    """ tests power calculation of two numbers"""
+    """ tests calculation of one number to the power of another"""
     assert Calculator.power_numbers(10, 0) == 1

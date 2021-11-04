@@ -32,12 +32,12 @@ class Calculator:
     @staticmethod
     def get_first_result():
         """ 0 gets the first item added to the history cache"""
-        return Calculator.history[0].getResult()
+        return Calculator.history[0].getresult()
 
     @staticmethod
     def get_history_result():
         """ -1 gets the most recent item added to the history cache"""
-        return Calculator.history[-1].getResult()
+        return Calculator.history[-1].getresult()
 
     @staticmethod
     def add_numbers(value_a, value_b):
