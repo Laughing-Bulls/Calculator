@@ -3,7 +3,7 @@
 
 class Calculation:
     """ the constructor is the first function called"""
-
+    # pylint: disable=too-few-public-methods
     def __init__(self, value_a, value_b):
         """ initialize - self references instantiated object of class"""
         self.value_a = value_a

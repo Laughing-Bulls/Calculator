@@ -1,19 +1,20 @@
 """Testing the Calculator"""
 import pytest
-# import pprint
+# import pprint: allows print during test
 
 from calculator.calculator import Calculator
 
 
 @pytest.fixture
 def zero_history_fixture():
-    """ This FIXTURE will clear the history cache"""
-    # This runs each time it is passed to a test
+    """ This FIXTURE will clear the history cache - it runs each time it is passed to a test """
+    # pylint: disable=redefined-outer-name
     Calculator.clear_history()
 
 
 def test_clear_history(zero_history_fixture):
     """ Testing that history cache has been cleared"""
+    # pylint: disable=redefined-outer-name,unused-argument
     assert Calculator.add_numbers(2, 2) == 4
     assert Calculator.add_numbers(3, 3) == 6
     assert Calculator.add_numbers(5, 2) == 7
@@ -23,7 +24,7 @@ def test_clear_history(zero_history_fixture):
 
 def test_calculator_add(zero_history_fixture):
     """Testing the Add function of the calculator AND the count in history cache"""
-    # Arrange by calling the calc method and Assert that results are correct
+    # pylint: disable=redefined-outer-name,unused-argument
     assert Calculator.add_numbers(2, 2) == 4
     assert Calculator.add_numbers(3, 3) == 6
     assert Calculator.add_numbers(5, 2) == 7
@@ -32,7 +33,7 @@ def test_calculator_add(zero_history_fixture):
 
 def test_first_and_last_result(zero_history_fixture):
     """Testing the get first and last history results"""
-    # Arrange by calling the calc method and Assert that results are correct
+    # pylint: disable=redefined-outer-name,unused-argument
     assert Calculator.add_numbers(2, 2) == 4
     assert Calculator.add_numbers(3, 3) == 6
     assert Calculator.add_numbers(5, 2) == 7
@@ -42,6 +43,7 @@ def test_first_and_last_result(zero_history_fixture):
 
 def test_calculator_subtract():
     """Testing the subtract function of the calculator"""
+    # Arrange by calling the Calculator method and Assert that results are correct
     assert Calculator.subtract_numbers(2, 1) == 1
 
 
