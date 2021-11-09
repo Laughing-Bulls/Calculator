@@ -1,68 +1,50 @@
 """Testing the Calculator"""
 import pytest
 # import pprint: allows print during test
-
-from calculator.calculator import Calculator
-
-
-@pytest.fixture
-def zero_history_fixture():
-    """ This FIXTURE will clear the history cache - it runs each time it is passed to a test """
-    # pylint: disable=redefined-outer-name
-    Calculator.clear_history()
+from calc.calculator import Calculator
+from calc.history.calculations import Calculations
 
 
-def test_clear_history(zero_history_fixture):
-    """ Testing that history cache has been cleared"""
+@pytest.fixture()
+def clear_history_fixture():
+    """FIXTURE to clear the history cache"""
+    Calculations.clear_history()
+
+
+def test_calculator_add(clear_history_fixture):
+    """Testing the addition function of the calculator"""
     # pylint: disable=redefined-outer-name,unused-argument
-    assert Calculator.add_numbers(2, 2) == 4
-    assert Calculator.add_numbers(3, 3) == 6
-    assert Calculator.add_numbers(5, 2) == 7
-    assert Calculator.clear_history() is True
-    assert Calculator.count_history() == 0
-
-
-def test_calculator_add(zero_history_fixture):
-    """Testing the Add function of the calculator AND the count in history cache"""
-    # pylint: disable=redefined-outer-name,unused-argument
-    assert Calculator.add_numbers(2, 2) == 4
-    assert Calculator.add_numbers(3, 3) == 6
-    assert Calculator.add_numbers(5, 2) == 7
-    assert Calculator.count_history() == 3
-
-
-def test_first_and_last_result(zero_history_fixture):
-    """Testing the get first and last history results"""
-    # pylint: disable=redefined-outer-name,unused-argument
-    assert Calculator.add_numbers(2, 2) == 4
-    assert Calculator.add_numbers(3, 3) == 6
-    assert Calculator.add_numbers(5, 2) == 7
-    assert Calculator.get_first_result() == 4
-    assert Calculator.get_history_result() == 7
-
-
-def test_calculator_subtract():
-    """Testing the subtract function of the calculator"""
     # Arrange by calling the Calculator method and Assert that results are correct
-    assert Calculator.subtract_numbers(2, 1) == 1
+    assert Calculator.add_numbers(2.0, 3.0, 4.0) == 9.0
 
 
-def test_calculator_multiply():
+def test_calculator_subtract(clear_history_fixture):
+    """Testing the subtract function of the calculator"""
+    # pylint: disable=redefined-outer-name,unused-argument
+    # Arrange by calling the Calculator method and Assert that results are correct
+    assert Calculator.subtract_numbers(2.0, 1.0) == -3.0
+
+
+def test_calculator_multiply(clear_history_fixture):
     """ tests multiplication of two numbers"""
-    assert Calculator.multiply_numbers(2, 4) == 8
+    # pylint: disable=redefined-outer-name,unused-argument
+    assert Calculator.multiply_numbers(2.0, 4.0) == 8.0
 
 
-def test_calculator_divide():
+def test_calculator_divide(clear_history_fixture):
     """ tests division of two numbers"""
-    assert Calculator.divide_numbers(10, 2) == 5
+    # pylint: disable=redefined-outer-name,unused-argument
+    assert Calculator.divide_numbers(10.0, 2.0) == 5.0
 
 
-def test_calculator_dividebyzero():
+def test_calculator_dividebyzero(clear_history_fixture):
     """ tests division by zero Exception"""
+    # pylint: disable=redefined-outer-name,unused-argument
     with pytest.raises(Exception):
-        assert Calculator.divide_numbers(10, 0)
+        assert Calculator.divide_numbers(10.0, 0)
 
 
-def test_calculator_power():
+def test_calculator_power(clear_history_fixture):
     """ tests calculation of one number to the power of another"""
-    assert Calculator.power_numbers(10, 0) == 1
+    # pylint: disable=redefined-outer-name,unused-argument
+    assert Calculator.power_numbers(10.0, 0.0) == 1.0

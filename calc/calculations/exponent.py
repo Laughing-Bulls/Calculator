@@ -1,6 +1,6 @@
 """ Exponent calculation that inherits A and B from calculation class"""
 
-from calc.calculation import Calculation
+from calc.calculations.calculation import Calculation
 
 
 class Exponent(Calculation):
@@ -8,4 +8,5 @@ class Exponent(Calculation):
     """ Calculates one value to the power of another"""
     def getresult(self):
         """ Take A to the power of B"""
-        return self.value_a ** self.value_b
+        exponential = self.values[0] ** self.values[1]
+        return exponential
