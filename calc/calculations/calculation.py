@@ -1,4 +1,4 @@
-""" This is the calculation base class / ABSTRACT CLASS """
+""" This is the calculation base class / it is an ABSTRACT CLASS """
 
 
 class Calculation:
@@ -9,15 +9,15 @@ class Calculation:
         """ initialize - self references instantiated object of class"""
         self.values = Calculation.convert_to_tuple_of_floats(values)
 
-    # @classmethod
-    # def create(cls, values: tuple):
+    @classmethod
+    def create(cls, values: tuple):
         """ class factory method"""
-    #    return cls(values)
+        return cls(values)
 
     # class factory method
     @staticmethod
     def convert_to_tuple_of_floats(values):
-        """ bound to the class, not the instance of the class"""
+        """ make tuples of type float. values bound to the class, not the instance of the class"""
         list_values_float = []
         for item in values:
             list_values_float.append(float(item))

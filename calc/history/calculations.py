@@ -1,5 +1,4 @@
 """ This class is for the history cache"""
-# import the namespaces
 
 
 class Calculations:
@@ -21,7 +20,8 @@ class Calculations:
     @staticmethod
     def add_to_history(calculation):
         """ adds the result to history cache"""
-        return Calculations.history.append(calculation)
+        Calculations.history.append(calculation)
+        return True
 
     @staticmethod
     def get_first_result():
@@ -34,6 +34,6 @@ class Calculations:
         return Calculations.history[-1]
 
     @staticmethod
-    def get_specified_result(num):
+    def get_specified_history_result(num):
         """ Gets the indexed item from history cache """
         return Calculations.history[num]

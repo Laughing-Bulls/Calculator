@@ -1,8 +1,7 @@
-"""Testing the functions of the History cache"""
+"""Testing the functions of the History cache - using ARRANGE, ACT, ASSERT"""
 import pytest
 # import pprint: allows print during test
 from calc.history.calculations import Calculations
-from calc.calculator import Calculator
 
 
 @pytest.fixture
@@ -19,9 +18,6 @@ def make_list_of_calculations():
     Calculations.add_to_history(3.0)
     Calculations.add_to_history(5.0)
     Calculations.add_to_history(7.0)
-    # values = (1, 2)
-    # addition = Addition(values)
-    # Calculations.add_to_history(addition)
 
 
 def test_clear_history(clear_history_fixture, make_list_of_calculations):
@@ -54,12 +50,11 @@ def test_first_result(clear_history_fixture, make_list_of_calculations):
 def test_add_to_history(clear_history_fixture, make_list_of_calculations):
     """Testing the add to history results"""
     # pylint: disable=redefined-outer-name,unused-argument
-    values = (2, 6)
-    Calculations.add_to_history(Calculator.add_numbers(values))
+    assert Calculations.add_to_history(8.0) is True
     assert Calculations.get_history_result() == 8.0
 
 
 def test_specified_result(clear_history_fixture, make_list_of_calculations):
     """Testing a count of history results"""
     # pylint: disable=redefined-outer-name,unused-argument
-    assert Calculations.get_specified_result(1) == 5.0
+    assert Calculations.get_specified_history_result(1) == 5.0

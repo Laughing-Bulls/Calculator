@@ -1,14 +1,13 @@
-""" Subtraction calculation that inherits A and B from calculation class"""
-
+""" Subtraction inherits arguments from parent Calculation class"""
 from calc.calculations.calculation import Calculation
 
 
-# This extends the Addition class within Calculation
 class Subtraction(Calculation):
     """ values come from the calculation parent class"""
+
     def getresult(self):
-        """ Subtract numbers in order of input"""
-        difference = 0.0
-        for value in self.values:
+        """ Start with first element, and then subtract the numbers following it"""
+        difference = self.values[0]
+        for value in self.values[1:]:
             difference -= value
         return difference

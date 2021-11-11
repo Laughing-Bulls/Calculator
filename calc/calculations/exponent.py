@@ -1,12 +1,13 @@
-""" Exponent calculation that inherits A and B from calculation class"""
-
+""" Exponent inherits arguments from parent Calculation class"""
 from calc.calculations.calculation import Calculation
 
 
 class Exponent(Calculation):
-    # A and B come from the calculation parent class
-    """ Calculates one value to the power of another"""
+    """ values come from the calculation parent class"""
+
     def getresult(self):
-        """ Take A to the power of B"""
-        exponential = self.values[0] ** self.values[1]
+        """ Raise first element to the power of second one, continue with subsequent ones"""
+        exponential = self.values[0]
+        for value in self.values[1:]:
+            exponential = exponential ** value
         return exponential

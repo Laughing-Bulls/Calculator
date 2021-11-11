@@ -13,35 +13,30 @@ class Calculator:
 
     @staticmethod
     def add_numbers(tuple_vales: tuple):
-        """ adds inputted numbers"""
-        addition = Addition(tuple_vales)
-        Calculations.add_to_history(addition)
-        return addition.getresult()
+        """ add inputted numbers and store the result"""
+        Calculations.add_to_history(Addition.create(tuple_vales).getresult())
+        return True
 
     @staticmethod
     def subtract_numbers(tuple_vales: tuple):
-        """ subtract inputted numbers"""
-        subtract = Subtraction(tuple_vales)
-        Calculations.add_to_history(subtract)
-        return subtract.getresult()
+        """ subtract inputted numbers from first element"""
+        Calculations.add_to_history(Subtraction.create(tuple_vales).getresult())
+        return True
 
     @staticmethod
     def multiply_numbers(tuple_vales: tuple):
         """ multiply inputted numbers and store the result"""
-        multiply = Multiplication(tuple_vales)
-        Calculations.add_to_history(multiply)
-        return multiply.getresult()
+        Calculations.add_to_history(Multiplication.create(tuple_vales).getresult())
+        return True
 
     @staticmethod
     def divide_numbers(tuple_vales: tuple):
-        """ divide two numbers and store the result"""
-        divide = Division(tuple_vales)
-        Calculations.add_to_history(divide)
-        return divide.getresult()
+        """ divide first number by the following elements"""
+        Calculations.add_to_history(Division.create(tuple_vales).getresult())
+        return True
 
     @staticmethod
     def power_numbers(tuple_vales: tuple):
-        """ compute one number to the power of another and store the result"""
-        expo = Exponent(tuple_vales)
-        Calculations.add_to_history(expo)
-        return expo.getresult()
+        """ compute one number to the powers of following elements"""
+        Calculations.add_to_history(Exponent.create(tuple_vales).getresult())
+        return True

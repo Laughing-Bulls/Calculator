@@ -1,15 +1,11 @@
-""" Addition calculation that inherits arguments from calculation class"""
+""" Addition class inherits from parent Calculation class"""
 from calc.calculations.calculation import Calculation
 
 
 # This extends the Addition class within Calculation
 class Addition(Calculation):
-    """ Arguments come from the calculation parent class """
+    """ values come from the Calculation parent class """
 
     def getresult(self):
-        """ Add the arguments"""
-        result = 0.0
-        for value in self.values:
-            result += value
-        return result
-        # TEST THIS: return sum(self.values)
+        """ Add all the elements of the tuple"""
+        return sum(self.values)

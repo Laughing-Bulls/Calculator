@@ -1,12 +1,11 @@
-""" Multiplication calculation that inherits A and B from calculation class"""
-
+""" Multiplication inherits arguments from parent Calculation class"""
 from calc.calculations.calculation import Calculation
 
 
 class Multiplication(Calculation):
-    """ A and B come from the calculation parent class"""
+    """ values come from the Calculation parent class"""
     def getresult(self):
-        """ Multiply inputs"""
+        """ Multiply all inputs together"""
         product = 1.0
         for value in self.values:
             product *= value
