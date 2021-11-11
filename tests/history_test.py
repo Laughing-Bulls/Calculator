@@ -54,7 +54,8 @@ def test_first_result(clear_history_fixture, make_list_of_calculations):
 def test_add_to_history(clear_history_fixture, make_list_of_calculations):
     """Testing the add to history results"""
     # pylint: disable=redefined-outer-name,unused-argument
-    Calculations.add_to_history(Calculator.add_numbers(2, 6))
+    values = (2, 6)
+    Calculations.add_to_history(Calculator.add_numbers(values))
     assert Calculations.get_history_result() == 8.0
 
 

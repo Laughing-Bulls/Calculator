@@ -7,7 +7,7 @@ class Calculation:
     # pylint: disable=too-few-public-methods
     def __init__(self, values: tuple):
         """ initialize - self references instantiated object of class"""
-        self.values = Calculation.convert_args_to_list(values)
+        self.values = Calculation.convert_to_tuple_of_floats(values)
 
     # @classmethod
     # def create(cls, values: tuple):
@@ -16,9 +16,9 @@ class Calculation:
 
     # class factory method
     @staticmethod
-    def convert_args_to_list(values):
+    def convert_to_tuple_of_floats(values):
         """ bound to the class, not the instance of the class"""
         list_values_float = []
         for item in values:
             list_values_float.append(float(item))
-        return list_values_float
+        return tuple(list_values_float)

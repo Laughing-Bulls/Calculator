@@ -12,36 +12,36 @@ class Calculator:
     """ This is the static Calculator class"""
 
     @staticmethod
-    def add_numbers(*args):
+    def add_numbers(tuple_vales: tuple):
         """ adds inputted numbers"""
-        addition = Addition(args)
+        addition = Addition(tuple_vales)
         Calculations.add_to_history(addition)
         return addition.getresult()
 
     @staticmethod
-    def subtract_numbers(*args):
+    def subtract_numbers(tuple_vales: tuple):
         """ subtract inputted numbers"""
-        subtract = Subtraction(args)
+        subtract = Subtraction(tuple_vales)
         Calculations.add_to_history(subtract)
         return subtract.getresult()
 
     @staticmethod
-    def multiply_numbers(*args):
+    def multiply_numbers(tuple_vales: tuple):
         """ multiply inputted numbers and store the result"""
-        multiply = Multiplication(args)
+        multiply = Multiplication(tuple_vales)
         Calculations.add_to_history(multiply)
         return multiply.getresult()
 
     @staticmethod
-    def divide_numbers(*args):
+    def divide_numbers(tuple_vales: tuple):
         """ divide two numbers and store the result"""
-        divide = Division(args)
+        divide = Division(tuple_vales)
         Calculations.add_to_history(divide)
         return divide.getresult()
 
     @staticmethod
-    def power_numbers(*args):
+    def power_numbers(tuple_vales: tuple):
         """ compute one number to the power of another and store the result"""
-        expo = Exponent(args)
+        expo = Exponent(tuple_vales)
         Calculations.add_to_history(expo)
         return expo.getresult()
