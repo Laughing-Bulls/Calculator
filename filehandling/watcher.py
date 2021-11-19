@@ -1,5 +1,5 @@
 """ This class contains all the filehandling methods. Directories will be 'input' and 'output' """
-import pandas as pd
+# import pandas as pd
 # pip install watchdog
 import sys
 import time
@@ -10,7 +10,7 @@ from watchdog.events import PatternMatchingEventHandler
 
 # Use Pandas library with alias pd for file actions
 
-from filehandling.filehandling import Filehandling
+# from filehandling.filehandling import Filehandling
 import os
 
 
@@ -25,15 +25,19 @@ class Filehandling:
         """ Return an alert if file is added to the directory"""
         pass
 
+    @staticmethod
     def on_created(event):
         print(f"hey, {event.src_path} has been created!")
 
-        def on_deleted(event):
-            print(f"what the f**k! Someone deleted {event.src_path}!")
+    @staticmethod
+    def on_deleted(event):
+        print(f"what the f**k! Someone deleted {event.src_path}!")
 
-        def on_modified(event):
-            print(f"hey buddy, {event.src_path} has been modified")
+    @staticmethod
+    def on_modified(event):
+        print(f"hey buddy, {event.src_path} has been modified")
 
+    @staticmethod
     def on_moved(event):
         print(f"ok ok ok, someone moved {event.src_path} to {event.dest_path}")
 
