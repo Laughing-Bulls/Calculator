@@ -1,5 +1,9 @@
-# Calculator Project Expansion
-[![Build Status](https://app.travis-ci.com/Laughing-Bulls/Calculator.svg?branch=development)](https://app.travis-ci.com/Laughing-Bulls/Calculator)
+# Calculator Project
+[![Build Status](https://app.travis-ci.com/Laughing-Bulls/Calculator.svg?branch=main)](https://app.travis-ci.com/Laughing-Bulls/Calculator)
 
-Modifications made to incorporate instructor's branch 5 enhancements. 
-Certain pylint errors disabled
+calculator.py has addition, subtraction, multiplication, division, and exponent functions
+main.py is a user interface for the calculator
+calculator_test.py tests calculator, including division by zero Exception
+
+To run tests, Lint, and Coverage report use this command:
+pytest  --pylint --cov
