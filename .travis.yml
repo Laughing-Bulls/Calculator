@@ -11,3 +11,5 @@ branches:
   only:
     - main
     - development
+    - refactor
+    - part5adjustments
