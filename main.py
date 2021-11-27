@@ -1,7 +1,6 @@
 """ This is a script to run a user test of the Python calculator"""
 from filehandling.filehandling import Filehandling
-import os
-import pandas as pd
+
 # pip install watchdog
 import sys
 import time
@@ -12,6 +11,7 @@ from watchdog.events import PatternMatchingEventHandler
 # Use Pandas library with alias pd for file actions
 from filehandling.filehandling import Filehandling
 import os
+import pandas as pd
 
 
 def main():
@@ -21,8 +21,30 @@ def main():
     # print current working directory
     print(os.getcwd())
 
-    data = Filehandling.read_line_from_file("input_test.csv")
-    data.head()
+    # data = Filehandling.read_line_from_file("input_test.csv")
+    # data = pd.read_csv("input_test.csv", index_col=0)
+    # print(data.head())
+    # print(data.tail())
+    # print(data)
+
+    # Filehandling.write_line_to_file("output_test.csv", data)
+    # pathname = "output_test.csv"
+    # pd.to_csv(pathname, df)  # creates a csv file from a dataframe
+
+    values_in = [1, 2, 3, 4, 5]  # assign a series of numbers
+    print(type(values_in))
+    df = pd.DataFrame(values_in)
+    print(type(df))
+    filename = "test.csv"  # uses current path
+    df.to_csv(filename, index=False)  # creates a csv file from a dataframe
+
+    data_in_file = pd.read_csv(filename, index_col=None)
+    print(type(data_in_file))
+    output = data_in_file.values.tolist()
+    print(type(output))
+    print(output)
+    print(output == [[1], [2], [3], [4], [5]])
+
 
     """ MANUAL USER TEST - NOT USED
     print("Welcome to the calculator!")
