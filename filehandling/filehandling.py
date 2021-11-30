@@ -1,4 +1,4 @@
-""" This class contains all the filehandling methods. Directories will be 'input' and 'output' """
+""" This class contains all the filehandling methods. Directories will be 'input/' and 'output/' """
 # Use Pandas library with alias pd for file actions
 import pandas as pd
 # pip install watchdog
@@ -22,16 +22,15 @@ class Filehandling:
         return os.getcwd()
 
     @staticmethod
-    def make_directory_path_name():
+    def make_input_directory():
         """ get current working directory and add input directory"""
         # add "input" to get_directory_path()
-        # string = "directory name" + "filename.csv"
-        pass
+        return Filehandling.current_directory_path() + "/input/"
 
     @staticmethod
     def make_output_directory():
         """ get current working directory and add output directory"""
-        # add "input" to get_directory_path()
+        # add "output" to get_directory_path()
         return Filehandling.current_directory_path() + "/output/"
 
     @staticmethod
@@ -53,11 +52,6 @@ class Filehandling:
     @staticmethod
     def open_file(filename):
         """ Open file in specified path"""
-        pass
-
-    @staticmethod
-    def create_output_file(filename):
-        """ Make file to hold output of calculations"""
         pass
 
     @staticmethod
@@ -84,16 +78,13 @@ class Filehandling:
     @staticmethod
     def retrieve_df_from_file(filename):
         """ Read data from file and return it"""
-        # arguments include (filepath,
         # df = pd.read_csv("https://sample.com/test.csv", sep="\t")
         # iterator: if TRUE, returns text file reader object for iteration
         # on_bad_lines parameter for error handling
         # nrows = number of lines to read, useful for large files
         # can cycle through the lines and values with range(n) where n = array length
-        # pd.DataFrame(df,
-        # df.iloc[integer] select row by integer location
         # To select NaN entries you can use pd.isnull() or its companion pd.notnull(): reviews[pd.isnull(reviews.country)]
-        filestring = Filehandling.current_directory_path() + "/input/" + filename
+        filestring = Filehandling.make_input_directory() + filename
         df = pd.read_csv(filestring, index_col=None)
         return df
 
@@ -106,7 +97,6 @@ class Filehandling:
         # chunksize: number of rows to write at a time
         # by default, columns get inserted at the end: df.insert(values)
         # assign method will create a new column to the dataframe: df.assign(math_function). It returns a COPY of the data
-        # df.to_csv(filename) - creates a csv file from a dataframe
         df.to_csv(pathname)  # creates a csv file from a dataframe
         return True
 

@@ -3,6 +3,8 @@ from filehandling.filehandling import Filehandling
 from calc.history.operations import Operations
 from calc.calculator import Calculator
 from calc.history.calculations import Calculations
+from filehandling.filehandling import Filehandling
+from filehandling.watcher import Watchdog
 # pip install watchdog
 # import sys
 # import time
@@ -13,7 +15,6 @@ from calc.history.calculations import Calculations
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 from watchdog.events import PatternMatchingEventHandler
-from filehandling.filehandling import Filehandling
 
 
 def main():
@@ -21,50 +22,62 @@ def main():
 
     print("Calculator program is running. Monitoring for new input files to calculate...")
 
-    # get filename
-    filename = "input_test.csv"
+    filename = Watchdog.watch()
 
-    # Read data from input file
+    # get filename, read data and put it into an array
+    # filename = "subtraction_test.csv"
     df = Filehandling.retrieve_df_from_file(filename)
-
-    # Put the dataframe into an array
     vals = Operations.convert_df_to_array(df)
-    # print(vals)
 
+    print("Input file detected.")
     print(df.head())
     # print(df.tail())
     # print(df)
 
     # length of row = df.shape[1]
     arguments = df.shape[1] - 1
-    # print(arguments)
     # print(len(df))
-
     # df.iloc[count, 1]
 
-    operation = "addition"
+    # decide operation
+    defined_ops = ["addition", "subtraction", "multiplication", "division", "exponent"]
+    operation = next((x for x in defined_ops if x in filename), False)
+    print(operation)
+
     answers = []
 
     for i in range(len(df)):
         inputs = []
         for j in range(arguments):
-            # print(df.iloc[i, : ])
             # if not null, add number to list
             if vals[i, j] is not None:
                 inputs.append(vals[i, j])
-        # make number a tuple
-        Calculator.add_numbers(Operations.convert_list_to_tuple(inputs))
+
+        # make number a tuple and perform operation
+        input_tuple = Operations.convert_list_to_tuple(inputs)
+        if(operation == "addition"):
+            Calculator.add_numbers(input_tuple)
+        if (operation == "subtraction"):
+            Calculator.subtract_numbers(input_tuple)
+        if (operation == "multiplication"):
+            Calculator.multiply_numbers(input_tuple)
+        if (operation == "division"):
+            Calculator.divide_numbers(input_tuple)
+        if (operation == "exponent"):
+            Calculator.power_numbers(input_tuple)
+        if (operation is False):
+            print("No file operation designated in input file. Error logged.")
+            Filehandling.make_exception_log_entry(filename, 0)
+            break
+
+        # compile answers and add to log file
         answers.append(Calculations.get_history_result())
         Filehandling.make_log_entry(filename, Operations.create_a_log_entry(i, operation, answers[-1]))
 
-    print(answers)
+    # add answers to new df and save in results file
     df_out = Operations.add_answer_column_to_df(df, answers)
-
-    # print(time.time())
-
     outfile = Filehandling.make_output_directory() + Filehandling.append_timestamp_to_filename(filename)
-    print(outfile)
-
+    print("Output is in: " + outfile)
     Filehandling.write_df_to_output_file(outfile, df_out)
 
     # print(series)
@@ -136,6 +149,7 @@ def main():
         print(str(value_a) + "^" + str(value_b) + " = " + str(answer))
     """
 
+    input("Press [ENTER] to exit program:")
     print("That's all, Folks!")
 
 

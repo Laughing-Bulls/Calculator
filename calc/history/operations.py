@@ -6,12 +6,6 @@ import pandas as pd
 class Operations:
     """ This is the class to perform operations on the files"""
 
-    # @staticmethod
-    # def clear_history():
-    #   """ clears the history cache"""
-    #  Calculations.history.clear()
-    # return True
-
     @staticmethod
     def get_tuple_from_row():
         """ Turns the dataframe row into tuples """
@@ -34,7 +28,7 @@ class Operations:
     @staticmethod
     def perform_operation():
         """ perform designated operation"""
-        # to add new column at fromt: df.insert(0, 'Sum', range(0, len(df)))
+        # to add new column at front: df.insert(0, 'Sum', range(0, len(df)))
         pass
 
     @staticmethod
