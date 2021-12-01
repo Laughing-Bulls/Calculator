@@ -23,12 +23,7 @@ class Operations:
         return df1
 
     @staticmethod
-    def create_a_log_entry(record_num, operation, result):
-        """ Create an entry for the logfile with the record number, operation, and result of the calculation"""
-        entry = ", Record #" + str(record_num + 1) + ", " + operation + ", " + str(result)
+    def create_a_log_entry(filename, record_num, operation, result):
+        """ Create an entry for the logfile or the exception file"""
+        entry = filename + ", Record #" + str(record_num + 1) + ", " + operation + ", " + str(result)
         return entry
-
-    @staticmethod
-    def create_error_log_entry():
-        """Write log file for exceptions such as divide by zero with a record number and filename"""
-        pass

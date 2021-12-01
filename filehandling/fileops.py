@@ -38,24 +38,21 @@ class Fileops:
 
             # make number a tuple and perform operation
             input_tuple = Operations.convert_list_to_tuple(inputs)
-            if (operation == "addition"):
-                Calculator.add_numbers(input_tuple)
-            if (operation == "subtraction"):
-                Calculator.subtract_numbers(input_tuple)
-            if (operation == "multiplication"):
-                Calculator.multiply_numbers(input_tuple)
-            if (operation == "division"):
-                Calculator.divide_numbers(input_tuple)
-            if (operation == "exponent"):
-                Calculator.power_numbers(input_tuple)
-            if (operation is False):
-                error = "No file operation designated in input file"
-                print(error + ". Error logged.")
-                Filehandling.make_exception_log_entry(filename, 0, error)
-                return answers
-            answers.append(Calculations.get_history_result())
-            # log the operations as they are completed
-            Filehandling.make_log_entry(filename, Operations.create_a_log_entry(i, operation, answers[-1]))
+            getattr(Calculator, operation)(input_tuple)
+            calculated_result = Calculations.get_history_result()
+            answers.append(calculated_result)
+
+            # log the operations and any errors as they are completed
+            Filehandling.make_log_entry(Operations.create_a_log_entry(filename, i, operation, answers[-1]))
+            if calculated_result is None:
+                error = "Math error logged. "
+                if operation == "division":
+                    error += "Division by zero attempted for line"
+                if operation == "exponent":
+                    error += "Exponent for line generated number too large to compute"
+                print(error)
+                Filehandling.make_exception_log_entry(Operations.create_a_log_entry(filename, i, error, None))
+
         return answers
 
     @staticmethod
@@ -75,6 +72,11 @@ class Fileops:
 
         # 1. determine operation to be conducted
         operation = Fileops.determine_operation_from_filename(filename)
+        if operation is False:
+            error = "No file operation designated in input file"
+            print(error + ". Error logged.")
+            Filehandling.make_exception_log_entry(Operations.create_a_log_entry(filename, 0, error, None))
+            return True
 
         # 2. read data and put it into an array
         vals = Fileops.get_file_data(filename)

@@ -37,23 +37,26 @@ class Filehandling:
         return newfilename[0] + "_output-" + str(Filehandling.get_timestamp()) + ".csv"
 
     @staticmethod
-    def make_log_entry(filename, entry):
+    def make_log_entry(message):
         """ Write log file in output folder with unix time stamp, input filename, record number, operation, result"""
-        filepath = Filehandling.make_output_directory() + "logfile.csv"
-        fileobject = open(filepath, 'a')
-        log_entry = str(Filehandling.get_timestamp()) + ", " + filename + entry + '\n'
-        fileobject.write(log_entry)
-        Filehandling.close_file(fileobject)
+        logfile = "logfile.csv"
+        Filehandling.log_entry(logfile, message)
         return True
 
     @staticmethod
-    def make_exception_log_entry(filename, record_num, error):
-        """ Write log file for exceptions such as divide by zero with a record number and filename"""
-        filepath = Filehandling.make_output_directory() + "errorlog.csv"
-        fileobject = open(filepath, 'a')
-        error_log_entry = str(Filehandling.get_timestamp()) + ", " + filename + ", Record #" + str(
-            record_num + 1) + error + '\n'
-        fileobject.write(error_log_entry)
+    def make_exception_log_entry(error_message):
+        """ Write log file entry for exceptions such as divide by zero with a filename and record number"""
+        logfile = "errorlog.csv"
+        Filehandling.log_entry(logfile, error_message)
+        return True
+
+    @staticmethod
+    def log_entry(logname, message):
+        """ Makes an entry into the designated log"""
+        filepath = Filehandling.make_output_directory() + logname
+        fileobject = Filehandling.open_file(filepath)
+        log_entry = str(Filehandling.get_timestamp()) + ", " + message + '\n'
+        Filehandling.write_to_file(fileobject, log_entry)
         Filehandling.close_file(fileobject)
         return True
 
@@ -71,12 +74,22 @@ class Filehandling:
         return True
 
     @staticmethod
-    def open_file(filename):
+    def open_file(filepath):
         """ Open file in specified path"""
-        pass
+        try:
+            fileobject = open(filepath, 'a')
+        except IOError:
+            raise
+        return fileobject
 
     @staticmethod
     def close_file(fileobject):
         """ Close designated file"""
         fileobject.close()
+        return True
+
+    @staticmethod
+    def write_to_file(fileobject, content):
+        """ Write content to designated file"""
+        fileobject.write(content)
         return True
