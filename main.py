@@ -1,10 +1,10 @@
-""" This is a script to run a user test of the Python calculator"""
-from filehandling.filehandling import Filehandling
-from calc.history.operations import Operations
-from calc.calculator import Calculator
-from calc.history.calculations import Calculations
-from filehandling.filehandling import Filehandling
-from filehandling.watcher import Watchdog
+""" This is a script to run the Python calculator"""
+# from filehandling.filehandling import Filehandling
+# from calc.history.operations import Operations
+# from calc.calculator import Calculator
+# from calc.history.calculations import Calculations
+# from filehandling.filehandling import Filehandling
+# from filehandling.fileops import Fileops
 # pip install watchdog
 # import sys
 # import time
@@ -12,74 +12,26 @@ from filehandling.watcher import Watchdog
 # import os
 # import pandas as pd
 # import time
-from watchdog.observers import Observer
-from watchdog.events import LoggingEventHandler
-from watchdog.events import PatternMatchingEventHandler
+# from watchdog.observers import Observer
+# from watchdog.events import LoggingEventHandler
+# from watchdog.events import PatternMatchingEventHandler
+from filehandling.watcher import Watchdog
 
 
 def main():
-    """ User test of the calculator program"""
+    """ Run the calculator program"""
 
     print("Calculator program is running. Monitoring for new input files to calculate...")
 
-    filename = Watchdog.watch()
+    Watchdog.watch()
 
-    # get filename, read data and put it into an array
-    # filename = "subtraction_test.csv"
-    df = Filehandling.retrieve_df_from_file(filename)
-    vals = Operations.convert_df_to_array(df)
+    print("That's all, Folks!")
 
-    print("Input file detected.")
-    print(df.head())
-    # print(df.tail())
-    # print(df)
 
-    # length of row = df.shape[1]
-    arguments = df.shape[1] - 1
-    # print(len(df))
-    # df.iloc[count, 1]
+if __name__ == "__main__":
+    main()
 
-    # decide operation
-    defined_ops = ["addition", "subtraction", "multiplication", "division", "exponent"]
-    operation = next((x for x in defined_ops if x in filename), False)
-    print(operation)
-
-    answers = []
-
-    for i in range(len(df)):
-        inputs = []
-        for j in range(arguments):
-            # if not null, add number to list
-            if vals[i, j] is not None:
-                inputs.append(vals[i, j])
-
-        # make number a tuple and perform operation
-        input_tuple = Operations.convert_list_to_tuple(inputs)
-        if(operation == "addition"):
-            Calculator.add_numbers(input_tuple)
-        if (operation == "subtraction"):
-            Calculator.subtract_numbers(input_tuple)
-        if (operation == "multiplication"):
-            Calculator.multiply_numbers(input_tuple)
-        if (operation == "division"):
-            Calculator.divide_numbers(input_tuple)
-        if (operation == "exponent"):
-            Calculator.power_numbers(input_tuple)
-        if (operation is False):
-            print("No file operation designated in input file. Error logged.")
-            Filehandling.make_exception_log_entry(filename, 0)
-            break
-
-        # compile answers and add to log file
-        answers.append(Calculations.get_history_result())
-        Filehandling.make_log_entry(filename, Operations.create_a_log_entry(i, operation, answers[-1]))
-
-    # add answers to new df and save in results file
-    df_out = Operations.add_answer_column_to_df(df, answers)
-    outfile = Filehandling.make_output_directory() + Filehandling.append_timestamp_to_filename(filename)
-    print("Output is in: " + outfile)
-    Filehandling.write_df_to_output_file(outfile, df_out)
-
+""" SPARE CODE
     # print(series)
     # by default, columns get inserted at the end: df.insert(values)
     # df.insert(0, 0, series, allow_duplicates=True)
@@ -102,8 +54,9 @@ def main():
     # print(type(output))
     # print(output)
     # print(output == [[1], [2], [3], [4], [5]])
+    """
 
-    """ MANUAL USER TEST - NOT USED
+""" MANUAL USER TEST - NOT USED
     print("Welcome to the calculator!")
     while True:
         try:
@@ -148,10 +101,3 @@ def main():
         answer = Calculator.power_numbers(inputs)
         print(str(value_a) + "^" + str(value_b) + " = " + str(answer))
     """
-
-    input("Press [ENTER] to exit program:")
-    print("That's all, Folks!")
-
-
-if __name__ == "__main__":
-    main()
