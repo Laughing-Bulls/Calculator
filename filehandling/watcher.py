@@ -4,8 +4,8 @@ import time
 from watchdog.observers import Observer
 # from watchdog.events import LoggingEventHandler
 from watchdog.events import PatternMatchingEventHandler
-from fileops import Fileops
-from filehandling import Filehandling
+from filehandling.fileops import Fileops
+from filehandling.filehandling import Filehandling
 
 
 class Watchdog:
