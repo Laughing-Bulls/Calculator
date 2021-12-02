@@ -1,0 +1,9 @@
+1638291601, not-a-function.csv, Record #1
+1638373734, not-a-function.csv, Record #1No file operation designated in input file
+1638375174, not-a-function.csv, Record #1, No file operation designated in input file
+1638377113, nothing.csv, Record #1, No file operation designated in input file, None
+1638380534, division-by-zero.csv, Record #8, Division by zero attempted for line of input file, None
+1638380566, not-a-function.csv, Record #1, No file operation designated in input file, None
+1638385486, not-a-function.csv, Record #1, No file operation designated in input file, None
+1638385504, division-by-zero.csv, Record #8, Math error logged. Division by zero attempted for line, None
+1638422766, not-a-function.csv, Record #1, No file operation designated in input file, None
