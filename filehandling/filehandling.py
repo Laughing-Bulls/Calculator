@@ -76,7 +76,7 @@ class Filehandling:
     def open_file(filepath):
         """ Open file in specified path"""
         try:
-            fileobject = open(filepath, 'a')
+            fileobject = open(filepath, 'a', encoding="utf8")
         except IOError:
             raise
         return fileobject

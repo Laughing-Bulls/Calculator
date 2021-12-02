@@ -1,7 +1,6 @@
 """Testing the Calculator - using ARRANGE, ACT, ASSERT"""
 import pytest
 from calc.calculator import Calculator
-# import pprint: allows print during test
 from calc.history.calculations import Calculations
 
 
