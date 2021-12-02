@@ -1,5 +1,4 @@
 """Testing the Calculator - using ARRANGE, ACT, ASSERT"""
-import pytest
 from calc.calculator import Calculator
 from calc.history.calculations import Calculations
 
@@ -35,10 +34,10 @@ def test_calculator_divide():
 
 
 def test_calculator_dividebyzero():
-    """ tests division by zero Exception"""
-    with pytest.raises(Exception):
-        test_tuple = (10.0, 0)
-        assert Calculator.division(test_tuple)
+    """ tests division by zero"""
+    test_tuple = (10.0, 0)
+    Calculator.division(test_tuple)
+    assert Calculations.get_history_result() is None
 
 
 def test_calculator_power():
@@ -46,3 +45,9 @@ def test_calculator_power():
     test_tuple = (3.0, 2.0, 2.0)
     Calculator.exponent(test_tuple)
     assert Calculations.get_history_result() == 81.0
+
+def test_calculator_power_too_high():
+    """ tests calculation of one number to the power of another"""
+    test_tuple = (30.0, 20.0, 20.0)
+    Calculator.exponent(test_tuple)
+    assert Calculations.get_history_result() is None

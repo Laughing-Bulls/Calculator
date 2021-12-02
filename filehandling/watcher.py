@@ -1,11 +1,11 @@
 """ This class contains all the watchdog methods. Watched directory will be 'input/' """
+# pip install watchdog
 import time
 from watchdog.observers import Observer
-# pip install watchdog
 # from watchdog.events import LoggingEventHandler
 from watchdog.events import PatternMatchingEventHandler
-from filehandling.filehandling import Filehandling
-from filehandling.fileops import Fileops
+from fileops import Fileops
+from filehandling import Filehandling
 
 
 class Watchdog:
@@ -25,26 +25,29 @@ class Watchdog:
     @staticmethod
     def on_deleted(event):
         """ NOT USED: print(f"Someone deleted {event.src_path}!")"""
+        # pylint: disable=unnecessary-pass
         pass
 
     @staticmethod
     def on_modified(event):
         """ NOT USED: print(f"Hey, {event.src_path} has been modified")"""
+        # pylint: disable=unnecessary-pass
         pass
 
     @staticmethod
     def on_moved(event):
         """ NOT USED: print(f"Someone moved {event.src_path} to {event.dest_path}")"""
+        # pylint: disable=unnecessary-pass
         pass
 
     @staticmethod
     def watch():
         """ This is the watchdog method that monitors the /input directory"""
         patterns = ["*"]
-        ignore_patterns = None
-        ignore_directories = False
-        case_sensitive = True
-        my_event_handler = PatternMatchingEventHandler(patterns, ignore_patterns, ignore_directories, case_sensitive)
+        ign_patterns = None
+        ign_dirs = False
+        case_sens = True
+        my_event_handler = PatternMatchingEventHandler(patterns, ign_patterns, ign_dirs, case_sens)
 
         my_event_handler.on_created = Watchdog.on_created
         # FOR FUTURE FUNCTIONS: my_event_handler.on_deleted = Watchdog.on_deleted

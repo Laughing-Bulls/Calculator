@@ -9,9 +9,9 @@ class Division(Calculation):
         """ Divide first element by each subsequent element; return None if dividing by zero"""
         quotient = self.values[0]
         for value in self.values[1:]:
-            if value == 0:
+            if value != 0:
+                quotient /= value
+            else:
                 print("Division by zero is not allowed.")
                 return None
-            else:
-                quotient /= value
         return quotient

@@ -1,8 +1,9 @@
 """ This is the script that directs the program what to do with the new file"""
+# pylint: disable=import-error
 from calc.history.operations import Operations
 from calc.calculator import Calculator
 from calc.history.calculations import Calculations
-from filehandling.filehandling import Filehandling
+from filehandling import Filehandling
 
 
 class Fileops:
@@ -10,22 +11,22 @@ class Fileops:
 
     @staticmethod
     def get_file_data(filename):
-        # get file, read it and return data as an array
+        """ get file, read it and return data as an array"""
         print("Input file being processed...")
-        df = Filehandling.retrieve_df_from_file(filename)
-        vals = Operations.convert_df_to_array(df)
+        df_in = Filehandling.retrieve_df_from_file(filename)
+        vals = Operations.convert_df_to_array(df_in)
         return vals
 
     @staticmethod
     def determine_operation_from_filename(filename):
-        # decide operation to use from the filename and return it as a string
+        """ decide operation to use from the filename and return it as a string"""
         defined_ops = ["addition", "subtraction", "multiplication", "division", "exponent"]
         operation = next((x for x in defined_ops if x in filename), False)
         return operation
 
     @staticmethod
     def perform_operation_on_data(vals, operation, filename):
-        # loop through array and return the results calculated using operation passed to it
+        """ loop through array and return the results calculated using operation passed to it"""
         answers = []
 
         for i in range(vals.shape[0]):
@@ -42,7 +43,8 @@ class Fileops:
             answers.append(calculated_result)
 
             # log the operations and any errors as they are completed
-            Filehandling.make_log_entry(Operations.create_a_log_entry(filename, i, operation, answers[-1]))
+            entry = Operations.create_a_log_entry(filename, i, operation, answers[-1])
+            Filehandling.make_log_entry(entry)
             if calculated_result is None:
                 error = "Math error logged. "
                 if operation == "division":
@@ -50,31 +52,33 @@ class Fileops:
                 if operation == "exponent":
                     error += "Exponent for line generated number too large to compute"
                 print(error)
-                Filehandling.make_exception_log_entry(Operations.create_a_log_entry(filename, i, error, None))
+                error_entry = Operations.create_a_log_entry(filename, i, error, None)
+                Filehandling.make_exception_log_entry(error_entry)
 
         return answers
 
     @staticmethod
     def add_answers_to_output_file(answers, filename):
-        # add answers to new df and save in results file
-        df = Filehandling.retrieve_df_from_file(filename)
-        df_out = Operations.add_answer_column_to_df(df, answers)
+        """ add answers to new df and save in results file"""
+        df_in = Filehandling.retrieve_df_from_file(filename)
+        df_out = Operations.add_answer_column_to_df(df_in, answers)
         print(df_out.head())
-        outfile = Filehandling.make_output_directory() + Filehandling.append_timestamp_to_filename(filename)
+        outfile = Filehandling.make_output_directory() + Filehandling.append_timestamp(filename)
         print("Sample of output that is saved in: " + outfile)
         Filehandling.write_df_to_output_file(outfile, df_out)
         return True
 
     @staticmethod
     def calculate_file(filename):
-        # These are the designated steps to perform on new file
+        """ These are the designated steps to perform on new file"""
 
         # 1. determine operation to be conducted
         operation = Fileops.determine_operation_from_filename(filename)
         if operation is False:
             error = "No file operation designated in input file"
             print(error + ". Error logged.")
-            Filehandling.make_exception_log_entry(Operations.create_a_log_entry(filename, 0, error, None))
+            error_entry = Operations.create_a_log_entry(filename, 0, error, None)
+            Filehandling.make_exception_log_entry(error_entry)
             return True
 
         # 2. read data and put it into an array

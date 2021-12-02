@@ -1,5 +1,7 @@
 # Calculator Project Expansion
-[![Build Status](https://app.travis-ci.com/Laughing-Bulls/Calculator.svg?branch=development)](https://app.travis-ci.com/Laughing-Bulls/Calculator)
 
-Modifications made to incorporate instructor's branch 5 enhancements. 
-Certain pylint errors disabled
+<h4> Modifications made to monitor input folder for files.
+Operation is determined by filename (contains "addition").
+New file with inputs and finished calculations placed in output folder.</h4>
+<h4> Log files are produced for each calculation and for exception errors, 
+like no file operation designated or division by zero<h4> </h4>

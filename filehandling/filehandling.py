@@ -1,7 +1,6 @@
 """ This class contains all the filehandling methods. Directories will be 'input/' and 'output/' """
 import os
 import time
-# Use Pandas library with alias pd for file actions
 import pandas as pd
 
 
@@ -31,21 +30,21 @@ class Filehandling:
         return round(time.time())
 
     @staticmethod
-    def append_timestamp_to_filename(filename):
+    def append_timestamp(filename):
         """ Append timestamp to filename"""
         newfilename = filename.split(".")
         return newfilename[0] + "_output-" + str(Filehandling.get_timestamp()) + ".csv"
 
     @staticmethod
     def make_log_entry(message):
-        """ Write log file in output folder with unix time stamp, input filename, record number, operation, result"""
+        """ Entry w/ unix time stamp, input filename, record number, operation, result"""
         logfile = Filehandling.make_output_directory() + "logfile.csv"
         Filehandling.log_entry(logfile, message)
         return True
 
     @staticmethod
     def make_exception_log_entry(error_message):
-        """ Write log file entry for exceptions such as divide by zero with a filename and record number"""
+        """ Entry for exceptions like divide by zero w/ filename and record number"""
         logfile = Filehandling.make_output_directory() + "errorlog.csv"
         Filehandling.log_entry(logfile, error_message)
         return True
@@ -63,18 +62,19 @@ class Filehandling:
     def retrieve_df_from_file(filename):
         """ Read data from file and return it"""
         filestring = Filehandling.make_input_directory() + filename
-        df = pd.read_csv(filestring, index_col=None)
-        return df
+        df_out = pd.read_csv(filestring, index_col=None)
+        return df_out
 
     @staticmethod
-    def write_df_to_output_file(pathname, df):
+    def write_df_to_output_file(pathname, df_in):
         """ Write dataframe to csv file in output folder"""
-        df.to_csv(pathname)
+        df_in.to_csv(pathname)
         return True
 
     @staticmethod
     def open_file(filepath):
         """ Open file in specified path"""
+        # pylint: disable=try-except-raise,consider-using-with
         try:
             fileobject = open(filepath, 'a', encoding="utf8")
         except IOError:

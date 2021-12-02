@@ -56,7 +56,7 @@ def test_get_timestamp():
 
 def test_append_timestamp_to_filename():
     """ Test append timestamp to filename"""
-    newfilename = Filehandling.append_timestamp_to_filename(TEST_FILE)
+    newfilename = Filehandling.append_timestamp(TEST_FILE)
     assert newfilename == "test-file_output-" + str(round(time.time())) + ".csv"
 
 

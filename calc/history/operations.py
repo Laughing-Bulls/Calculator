@@ -10,18 +10,18 @@ class Operations:
         return tuple(list_to_convert)
 
     @staticmethod
-    def convert_df_to_array(df):
+    def convert_df_to_array(df_in):
         """ Convert a dataframe into an array"""
-        return df.values
+        return df_in.values
 
     @staticmethod
-    def add_answer_column_to_df(df, answers):
+    def add_answer_column_to_df(df_in, answers):
         """ Add the answer column as last column of input df"""
-        df1 = df.assign(answers=answers)
-        return df1
+        df_out = df_in.assign(answers=answers)
+        return df_out
 
     @staticmethod
-    def create_a_log_entry(filename, record_num, operation, result):
+    def create_a_log_entry(filename, record_nm, operation, result):
         """ Create an entry for the logfile or the exception file"""
-        entry = filename + ", Record #" + str(record_num + 1) + ", " + operation + ", " + str(result)
+        entry = filename + ", Record #" + str(record_nm + 1) + ", " + operation + ", " + str(result)
         return entry

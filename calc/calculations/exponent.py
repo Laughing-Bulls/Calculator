@@ -6,7 +6,7 @@ class Exponent(Calculation):
     """ values come from the calculation parent class"""
 
     def getresult(self):
-        """ Raise first element to the power of second one, continue with subsequent ones. Return None if too big"""
+        """ Raise first element to the power of subsequent ones. Return None if too big"""
         exponential = self.values[0]
         try:
             for value in self.values[1:]:
