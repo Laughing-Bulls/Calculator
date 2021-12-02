@@ -12,7 +12,7 @@ current_working_directory = os.getcwd()
 test_path = current_working_directory + "/tests/"
 TEST_FILE = "test-file.csv"
 testfilepath = test_path + TEST_FILE
-# assign test dataframe
+# test data
 test_values = [1, 2, 3, 4, 5]
 TEST_VALUE_STRING = "1, 2, 3, 4, 5"
 
