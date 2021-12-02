@@ -20,7 +20,7 @@
             <h1>
                 Abstraction
             </h1>
-            <img src="images/abstract.jpg" alt="jpg picture of abstract art">
+            <img src="{{ url_for('static', filename='images/abstract.jpg') }}" alt="jpg picture of abstract art">
             <p>
                 This programming principle helps usability by putting lower level elements below the higher level
                 mechanism for using them. This not only helps readability, but it can facilitate code changes if a
@@ -35,7 +35,7 @@
 
         <div class="wrapperbox">
             <div class="box gridpic">
-                <img src="images/abstract-screen.png" alt="Screenshot of code">
+                <img src="{{ url_for('static', filename='images/abstract-screen.png') }}" alt="Screenshot of code">
             </div>
             <div class="box gridpiclabel">
                 <p>In the calculator program, Calculator can be considered an abstract class, since all of its methods
@@ -54,7 +54,7 @@
             <h1>
                 Encapsulation
             </h1>
-            <img src="images/capsule.jpg" alt="jpg picture of pill capsules">
+            <img src="{{ url_for('static', filename='images/capsule.jpg') }}" alt="jpg picture of pill capsules">
             <p>
                 This refers to the concept of combining related methods and attributes. Related data and methods are
                 contained within a class, perhaps with restrictions on accessing the variables and methods. For example,
@@ -66,7 +66,7 @@
 
         <div class="wrapperbox">
             <div class="box gridpic">
-                <img src="images/capsule-screen.png" alt="Screenshot of code">
+                <img src="{{ url_for('static', filename='images/capsule-screen.png') }}" alt="Screenshot of code">
             </div>
             <div class="box gridpiclabel">
                 <p>In the Python Calculator program, the “Calculations” class combines attributes and methods related to
@@ -84,7 +84,7 @@
             <h1>
                 Inheritance
             </h1>
-            <img src="images/inherit.png" alt="png picture of family tree">
+            <img src="{{ url_for('static', filename='images/inherit.png') }}" alt="png picture of family tree">
             <p>
                 This refers to the technique of putting classes into parent-child relationships. This is a useful way to
                 reuse code and save programming time. A child “inherits” its parent’s methods, but the parent does not
@@ -98,7 +98,7 @@
 
         <div class="wrapperbox">
             <div class="box gridpic">
-                <img src="images/inherit-screen.png" alt="Screenshot of code">
+                <img src="{{ url_for('static', filename='images/inherit-screen.png') }}" alt="Screenshot of code">
             </div>
             <div class="box gridpiclabel">
                 <p>In the calculator program, you can recognize inheritance in the “Addition” class statement because
@@ -117,7 +117,7 @@
             <h1>
                 Polymorphism
             </h1>
-            <img src="images/morph.jpg" alt="jpg picture of butterfly cocoon">
+            <img src="{{ url_for('static', filename='images/morph.jpg') }}" alt="jpg picture of butterfly cocoon">
             <p>
                 This refers to the concept of being able to perform an operation on multiple types of items. This may
                 mean that a function behaves differently, depending on the data type. A generic function is a type of
@@ -130,7 +130,7 @@
 
         <div class="wrapperbox">
             <div class="box gridpic">
-                <img src="images/morph-screen.png" alt="Screenshot of code">
+                <img src="{{ url_for('static', filename='images/morph-screen.png') }}" alt="Screenshot of code">
             </div>
             <div class="box gridpiclabel">
                 <p>The Python Calculator program creates Polymorphism in its instantiation of Calculation objects. It
