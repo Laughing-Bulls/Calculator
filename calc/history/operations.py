@@ -1,6 +1,4 @@
 """ This class is for operations on data extracted from the input files and create log entries"""
-# Use Pandas library with alias pd for file actions
-# import pandas as pd
 
 
 class Operations:

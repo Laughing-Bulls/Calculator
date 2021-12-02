@@ -1,5 +1,4 @@
 """ This is a Python calculator"""
-# import the namespaces
 from calc.calculations.addition import Addition
 from calc.calculations.subtraction import Subtraction
 from calc.calculations.multiplication import Multiplication

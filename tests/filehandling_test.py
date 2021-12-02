@@ -2,74 +2,124 @@
 import pytest
 import pandas as pd
 import os
-# import pprint: allows print during test
+import shutil
+import time
+from filehandling.filehandling import Filehandling
+
+
+# assign the filepath ./tests/ as the test file path for test-file.csv
+current_working_directory = os.getcwd()
+test_path = current_working_directory + "/tests/"
+test_file = "test-file.csv"
+testfilepath = test_path + test_file
+# assign test dataframe
+test_values = [1, 2, 3, 4, 5]
+test_value_string = "1, 2, 3, 4, 5"
 
 
 @pytest.fixture
-def open_file_fixture():
-    """ This FIXTURE will clear the history cache - it runs each time it is passed to a test """
-    # pylint: disable=redefined-outer-name
-    Calculations.clear_history()
+def delete_existing_test_file_fixture():
+    """ This FIXTURE will delete testfile in tests/ directory - it runs each time it is passed to a test """
+    if os.path.exists(testfilepath) and os.path.isfile(testfilepath):
+        os.remove(testfilepath)
 
 
 @pytest.fixture
-def assign_file_path_fixture():
-    """ This FIXTURE will assign the current filepath as the test file path """
-    current_path = os.getcwd()
+def make_test_file_fixture(delete_existing_test_file_fixture):
+    """ This FIXTURE will create a test csv file in tests/ directory - it runs each time it is passed to a test """
+    fileobject = Filehandling.open_file(testfilepath)
+    Filehandling.write_to_file(fileobject, test_value_string)
+    Filehandling.close_file(fileobject)
 
-@pytest.fixture
-def put_data_into_file_fixture():
-    """ This FIXTURE will make a file with data - it runs each time it is passed to a test """
-    values_in = [1, 2, 3, 4, 5]     # assign a series of numbers
-    df = pd.DataFrame(values_in)    # makes into a pandas dataframe
-    filename = "test.csv"           # uses current path
-    df.to_csv(filename, index=False)             # creates a csv file from the dataframe
 
-def test_read_from_file(put_data_into_file_fixture):
-    """ Read test file and check values"""
-    filename = "test.csv"
-    data_in_file = pd.read_csv(filename, index_col=None)
-    output = data_in_file.values.tolist()
+def test_current_directory_path():
+    """ test for current working directory"""
+    assert Filehandling.current_directory_path() == current_working_directory
+
+
+def test_make_input_directory():
+    """ test input directory"""
+    assert Filehandling.make_input_directory() == current_working_directory + "/input/"
+
+
+def test_make_output_directory():
+    """ test output directory"""
+    assert Filehandling.make_output_directory() == current_working_directory + "/output/"
+
+
+def test_get_timestamp():
+    """ Test UNIX timestamp"""
+    assert Filehandling.get_timestamp() == round(time.time())
+
+
+def test_append_timestamp_to_filename():
+    """ Test append timestamp to filename"""
+    newfilename = Filehandling.append_timestamp_to_filename(test_file)
+    assert newfilename == "test-file_output-" + str(round(time.time())) + ".csv"
+
+
+def test_open_file(make_test_file_fixture):
+    """ Test to open file in specified test path"""
+    try:
+        fileobject = Filehandling.open_file(testfilepath)
+    except IOError:
+        raise
+    fileobject.close()
+    assert True
+
+
+def test_close_file(make_test_file_fixture):
+    """ Close designated file"""
+    try:
+        fileobject = open(testfilepath, 'a')
+    except IOError:
+        raise
+    assert Filehandling.close_file(fileobject) is True
+
+
+def test_write_to_file(delete_existing_test_file_fixture):
+    """ Test write additional content to designated file"""
+    try:
+        fileobject = open(testfilepath, 'w')
+    except IOError:
+        raise
+    Filehandling.write_to_file(fileobject, test_value_string)
+    fileobject.close()
+    fileobject = open(testfilepath, 'r')
+    read_data = fileobject.readline()
+    fileobject.close()
+    assert read_data == "1, 2, 3, 4, 5"
+
+
+def test_log_entry(make_test_file_fixture):
+    """ Tests entry into the designated test file"""
+    message = "Test log entry"
+    Filehandling.log_entry(testfilepath, message)
+    with open(testfilepath, "r") as file:
+        for line in file:
+            pass
+    assert line == test_value_string + str(round(time.time())) + ", " + message + "\n"
+
+
+def test_write_df_to_output_file(delete_existing_test_file_fixture):
+    """ Test pandas write dataframe to csv file in test folder"""
+    df_test = pd.DataFrame(test_values)
+    Filehandling.write_df_to_output_file(testfilepath, df_test)
+    test_file_data = pd.read_csv(testfilepath, index_col=0)
+    output = test_file_data.values.tolist()
     assert output == [[1], [2], [3], [4], [5]]
 
-    def monitor_directory_test():
-        """ Return an alert if file is added to the directory"""
-        pass
 
-    def open_file_test(filename):
-        """ Add all the elements of the tuple"""
-        pass
+def test_retrieve_df_from_file(delete_existing_test_file_fixture):
+    """ Test pandas read dataframe from csv file"""
+    df_test = pd.DataFrame(test_values)
+    Filehandling.write_df_to_output_file(testfilepath, df_test)
+    inputpath = current_working_directory + "/input/"
+    shutil.move(testfilepath, inputpath)
+    df = Filehandling.retrieve_df_from_file(test_file)
+    output = df.values.tolist()
+    inputfilepath = inputpath + test_file
+    os.remove(inputfilepath)
+    assert output == [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
 
-    def create_output_file_test(filename):
-        """ Add all the elements of the tuple"""
-        pass
-
-    def read_line_from_file_test(filename):
-        """ Read line from file and return it"""
-        # arguments include (filepath,
-        # df = pd.read_csv("https://sample.com/test.csv", sep="\t")
-        # iterator: if TRUE, returns text file reader object for iteration
-        # on_bad_lines parameter for error handling
-        # nrows = number of lines to read, useful for large files
-        # can cycle through the lines and values with range(n) where n = array length
-        # pd.DataFrame(df,
-        # df.iloc[integer] select row by integer location
-        input = pd.read_csv(filename, index_col=0)
-        data = pd.DataFrame(input)
-        assert data == (1, 2, 3, 4, 5)
-
-    def write_line_to_file_test(pathname, filename, df):
-        """ Write entry in file"""
-        # first argument is path_or_buf: only required field; if a file object, it must be opened with: newline=''
-        # header: default is true for column index names
-        # index: default is true for row index names
-        # chunksize: number of rows to write at a time
-        # by default, columns get inserted at the end: df.insert(values)
-        # assign method will create a new column to the dataframe: df.assign(math_function). It returns a COPY of the data
-        pd.to_csv(pathname, filename, df) # creates a csv file from a dataframe
-        return True
-
-    def close_file_test(filename):
-        """ Add all the elements of the tuple"""
-        pass
 

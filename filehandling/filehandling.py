@@ -39,22 +39,21 @@ class Filehandling:
     @staticmethod
     def make_log_entry(message):
         """ Write log file in output folder with unix time stamp, input filename, record number, operation, result"""
-        logfile = "logfile.csv"
+        logfile = Filehandling.make_output_directory() + "logfile.csv"
         Filehandling.log_entry(logfile, message)
         return True
 
     @staticmethod
     def make_exception_log_entry(error_message):
         """ Write log file entry for exceptions such as divide by zero with a filename and record number"""
-        logfile = "errorlog.csv"
+        logfile = Filehandling.make_output_directory() + "errorlog.csv"
         Filehandling.log_entry(logfile, error_message)
         return True
 
     @staticmethod
-    def log_entry(logname, message):
+    def log_entry(logpathfile, message):
         """ Makes an entry into the designated log"""
-        filepath = Filehandling.make_output_directory() + logname
-        fileobject = Filehandling.open_file(filepath)
+        fileobject = Filehandling.open_file(logpathfile)
         log_entry = str(Filehandling.get_timestamp()) + ", " + message + '\n'
         Filehandling.write_to_file(fileobject, log_entry)
         Filehandling.close_file(fileobject)

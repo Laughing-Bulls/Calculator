@@ -1,5 +1,4 @@
 """ This is a script to run the Python calculator"""
-
 from filehandling.watcher import Watchdog
 
 
