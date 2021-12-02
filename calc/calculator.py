@@ -11,6 +11,12 @@ class Calculator:
     """ This is the static Calculator class"""
 
     @staticmethod
+    def get_last_result_value():
+        """ This gets the the last calculation result"""
+        # Instructor made this method so there's no more than one action per function
+        return Calculations.get_history_result()
+
+    @staticmethod
     def addition(tuple_vales: tuple):
         """ add inputted numbers and store the result"""
         Calculations.add_to_history(Addition.create(tuple_vales).getresult())
