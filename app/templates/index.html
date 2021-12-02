@@ -7,11 +7,51 @@
     </style>
 {% endblock %}
 {% block content %}
-    <h1>Index</h1>
-    <p class="important">
-      Welcome to my awesome homepage.
-        <img src="{{ url_for('static', filename='images/njit.jpg') }}">
-    </p>
 
-<a href="/good/1.0/2.0">One Plus Two Good</a><br><a href="/bad/1/2">One Plus Two Bad</a>
+    <!-- TEMPLATE Page Content-->
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{{ url_for('static', filename='images/njit-logo.png') }}" alt="NJIT logo" /></div>
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">Index Page for Calculator</h1>
+            <p>This is a template that will be used for the calculator project. It isn't very fancy, but it looks kind of professional. It uses standard Bootstrap components.</p>
+            <a class="btn btn-primary" href="#!">Call to Action!</a>
+        </div>
+    </div>
+    <!-- Call to Action-->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">Welcome to my awesome homepage!</p></div>
+    </div>
+    <!-- Content Row-->
+    <div class="row gx-4 gx-lg-5">
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">The Web Calculator</h2>
+                    <p class="card-text">Try the Web Calculator. Free for the first 90 days.</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">One Plus Two Good</h2>
+                    <p class="card-text">This is what good math looks like. Let our calculator help you.</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="/good/1.0/2.0">More Info</a></div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">One Plus Two Bad</h2>
+                    <p class="card-text">See what it looks like to be bad at math. So embarassing</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="/bad/1/2">More Info</a></div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
