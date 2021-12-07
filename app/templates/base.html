@@ -26,17 +26,34 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">HOME</a></li>
-                <li class="nav-item"><a class="nav-link" href="/calculator">Basic HTML Form</a>
+                <li class="nav-item"><a class="nav-link" href="/calculator">Basic Calculator Form</a>
                 <li class="nav-item"><a class="nav-link" href="/basicform">Basic HTML Form</a></li>
                 <li class="nav-item"><a class="nav-link" href="../static/ook.html">WTF Form for flask</a></li>
-                <li class="nav-item"><a class="nav-link" href="/oop">OOP1</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/oop.html">OOP2</a></li>
+                <li class="nav-item"><a class="nav-link" href="/oop">Object Oriented Programming</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
+<!-- FLASH ERROR-->
+<div class="container-fluid" style="min-height:100%; width:80%">
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                    <li>{{message}}</li>
+                </div>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+<!-- CONTENT-->
 <div id="content">{% block content %}{% endblock %}</div>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

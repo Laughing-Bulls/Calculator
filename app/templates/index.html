@@ -2,11 +2,7 @@
 {% block title %}Index{% endblock %}
 {% block head %}
     {{ super() }}
-    <style type="text/css">
-        .important {
-            color: #336699;
-        }
-    </style>
+
 {% endblock %}
 {% block content %}
 
@@ -18,15 +14,15 @@
                                        src="{{ url_for('static', filename='images/njit-logo.png') }}" alt="NJIT logo"/>
             </div>
             <div class="col-lg-5">
-                <h1 class="font-weight-light">Index Page for Calculator</h1>
-                <p>This is a template that will be used for the web calculator project. It isn't fancy, but it looks
-                    professional. It uses standard Bootstrap components.</p>
+                <h1 class="font-weight-light">The Python Calculator</h1>
+                <p>This is a web-based calculator project.
+                    It is programmed in Python and delivered over html using standard Bootstrap components.</p>
                 <a class="btn btn-primary" href="/calculator">Calculate!</a>
             </div>
         </div>
         <!-- Call to Action-->
         <div class="card text-white bg-secondary my-5 py-4 text-center">
-            <div class="card-body"><p class="text-white m-0">Welcome to my awesome homepage!</p></div>
+            <div class="card-body"><p class="text-white m-0">Welcome to the Python Calculator!</p></div>
         </div>
         <!-- Content Row-->
         <div class="row gx-4 gx-lg-5">
@@ -42,19 +38,19 @@
             <div class="col-md-4 mb-5">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">One Plus Two Good</h2>
-                        <p class="card-text">This is what good math looks like. Let our calculator help you.</p>
+                        <h2 class="card-title">Object Oriented Programming</h2>
+                        <p class="card-text">Learn the fundamental concepts of Object Oriented Programming.</p>
                     </div>
-                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/good/1.0/2.0">More Info</a></div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/oop">More Info</a></div>
                 </div>
             </div>
             <div class="col-md-4 mb-5">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">One Plus Two Bad</h2>
-                        <p class="card-text">See what it looks like to be bad at math. So embarassing</p>
+                        <h2 class="card-title">History of the Internet</h2>
+                        <p class="card-text">Learn about the important people and events of the early Internet</p>
                     </div>
-                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/bad/1/2">More Info</a></div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#">More Info</a></div>
                 </div>
             </div>
         </div>

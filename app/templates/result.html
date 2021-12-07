@@ -2,24 +2,24 @@
 {% block title %}Index{% endblock %}
 {% block head %}
     {{ super() }}
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
+
 {% endblock %}
 {% block content %}
-    <h1>Calculation Result</h1>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success" role="alert">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
-    <strong>Value 1: </strong> {{ value1 }} <br>
-    <strong>Value 2: </strong> {{ value2 }} <br>
-    <strong>Operation: </strong> {{ operation }} <br>
-    <strong>Result: </strong> {{ result }}
 
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+    <div class="card-body"><p class="text-white m-0">Dude, I told you it was awesome!</p></div>
+        <h1>Calculation Result</h1>
+
+        <div style="text-align: left; margin-left: 45%">
+            <strong>Value 1: </strong> {{ value1 }} <br>
+            <strong>Value 2: </strong> {{ value2 }} <br>
+            <strong>Operation: </strong> {{ operation }} <br>
+            <strong>Result: </strong> {{ result }}
+        </div>
+    </div>
+    <div class="container px-4 px-lg-5 text-center">
+        <a class="btn btn-primary" href="/calculator">Calculate Again!</a>
+        <br>
+        <br>
+    </div>
 {% endblock %}

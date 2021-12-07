@@ -2,49 +2,55 @@
 {% block title %}Index{% endblock %}
 {% block head %}
     {{ super() }}
-    <style type="text/css">
-        .important {
-            color: #336699;
-        }
-    </style>
+
 {% endblock %}
 {% block content %}
 
     <div class="card text-white bg-secondary my-5 py-4 text-center">
-            <div class="card-body"><p class="text-white m-0">Dude, this calculator really works!</p></div>
+        <div class="card-body"><p class="text-white m-0">Dude, you have to try this calculator!</p></div>
 
-    <h1>Web Calculator</h1>
-     {% if error %}
-         <div class="alert alert-danger error" role="alert">
-             {{ error }}
-        </div>
-      {% endif %}
-  <div class="mb-3 row">
-
-    <form action="/calculator" method="POST">
-        <label for="value1" class="col-sm-2 col-form-label">Value 1:</label><br>
-        <input type="text" id="value1" name="value1" value="1"><br>
-        <label for="value2" class="col-sm-2 col-form-label">Value 2:</label><br>
-        <input type="text" id="value2" name="value2" value="2"><br>
-
-        <fieldset>
-        <legend>Operation</legend>
-          <div>
-            <input type="radio" name="operation" id="addition" value="addition" checked>
-            <label for="addition">addition</label>
-          </div>
-          <div>
-            <input type="radio" name="operation" id="subtraction" value="subtraction">
-            <label for="subtraction">subtraction</label>
-          </div>
-          <div>
-            <input type="radio" name="operation" id="multiplication" value="multiplication">
-            <label for="multiplication">multiplication</label>
-          </div>
-        </fieldset>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
-  </div>
+        <h1>Web Calculator</h1>
+        {% if error %}
+            <div class="alert alert-danger error" role="alert">
+                {{ error }}
             </div>
+        {% endif %}
+        <div class="mb-3 row">
+
+            <form action="/calculator" method="POST">
+                <label for="value1" class="col-sm-2 col-form-label">Value 1:</label><br>
+                <input type="text" id="value1" name="value1" value="1"><br>
+                <label for="value2" class="col-sm-2 col-form-label">Value 2:</label><br>
+                <input type="text" id="value2" name="value2" value="2"><br>
+
+                <fieldset>
+                    <div style="text-align: left; margin-left: 45%">
+                        <legend>Operation</legend>
+                        <div>
+                            <input type="radio" name="operation" id="addition" value="addition" checked>
+                            <label for="addition">Addition</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="operation" id="subtraction" value="subtraction">
+                            <label for="subtraction">Subtraction</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="operation" id="multiplication" value="multiplication">
+                            <label for="multiplication">Multiplication</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="operation" id="division" value="division">
+                            <label for="division">Division (do not divide by zero)</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="operation" id="exponent" value="exponent">
+                            <label for="exponent">Exponent (to the power of)</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
 {% endblock %}
