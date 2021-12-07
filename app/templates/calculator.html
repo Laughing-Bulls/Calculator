@@ -10,7 +10,10 @@
 {% endblock %}
 {% block content %}
 
-    <h1>My Calculator</h1>
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+            <div class="card-body"><p class="text-white m-0">Dude, this calculator really works!</p></div>
+
+    <h1>Web Calculator</h1>
      {% if error %}
          <div class="alert alert-danger error" role="alert">
              {{ error }}
@@ -39,8 +42,9 @@
             <label for="multiplication">multiplication</label>
           </div>
         </fieldset>
-
+        <br>
         <input type="submit" value="Submit">
     </form>
   </div>
+            </div>
 {% endblock %}
