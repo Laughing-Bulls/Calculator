@@ -41,15 +41,20 @@
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul class=flashes>
-            {% for message in messages %}
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
-                    <li>{{message}}</li>
-                </div>
-            {% endfor %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                        <li>{{ message }}</li>
+                    </div>
+                {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
+    {% if error %}
+        <div class="alert alert-danger error" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
 
 </div>
 
