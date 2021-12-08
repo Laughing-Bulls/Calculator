@@ -5,5 +5,6 @@ from flask import render_template, flash
 class IndexController(ControllerBase):
     @staticmethod
     def get():
-        flash("ALERT: FLASH TEST")
+        """ This method will render the index page (home page)"""
+        # flash("ALERT: FLASH TEST"
         return render_template('index.html')
