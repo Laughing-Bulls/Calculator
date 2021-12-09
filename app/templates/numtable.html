@@ -31,7 +31,8 @@
   <script>
     $(document).ready(function () {
       $('#data').DataTable({
-        columns:
+          "order":[[0,'desc']],
+          columns:
             [
                 {searchable: true, orderable: true},
                 {searchable: false},
