@@ -3,6 +3,7 @@ from flask import render_template
 
 
 class SalesmenController(ControllerBase):
+
     @staticmethod
     def get():
         """ This method will render the Salesmen page"""
