@@ -6,4 +6,5 @@ pycodestyle
 pytest-pylint
 pandas
 Flask
+Flask-SQLAlchemy
 uWSGI
