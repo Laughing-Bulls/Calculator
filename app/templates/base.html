@@ -14,6 +14,7 @@
 
         <title>Calculator Website</title>
     </head>
+
 <body>
     <!-- Body from bootstrap template-->
     <!-- Responsive navbar-->
@@ -26,41 +27,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">HOME</a></li>
-                        <li>
-                            <div class="dropdown">
-                                <button class="dropbtn" onclick="showDropdownContent()"> Page Navigator
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-content" id="navDropPages">
-                                    <a class="nav-link" href="/browsers">Early Browsers</a>
-                                    <a class="nav-link" href="/builders">Early Builders</a>
-                                    <a class="nav-link" href="/isp">Early ISPs</a>
-                                    <a class="nav-link" href="/salesmen">Early Salesmen</a>
-                                    <a class="nav-link" href="/calculator">Python Calculator</a>
-                                    <a class="nav-link" href="/numtable">Results Table</a>
-                                    <a class="nav-link" href="/oop">Object Oriented Programming</a>
-                              </div>
+                    <div class="dropdown">
+                        <button class="dropbtn" onclick="showDropdownContent()"> Page Navigator
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="navDropPages">
+                            <a class="nav-link" href="/browsers">Early Browsers</a>
+                            <a class="nav-link" href="/builders">Early Builders</a>
+                            <a class="nav-link" href="/isp">Early ISPs</a>
+                            <a class="nav-link" href="/salesmen">Early Salesmen</a>
+                            <a class="nav-link" href="/calculator">Python Calculator</a>
+                            <a class="nav-link" href="/numtable">Results Table</a>
+                            <a class="nav-link" href="/oop">Object Oriented Programming</a>
                         </div>
-                    </li>
+                    </div>
                 </ul>
             </div>
         </div>
     </nav>
-    <script>
-        function showDropdownContent() {
-          document.getElementById("navDropPages").classList.toggle("show");
-        }
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(e) {
-          if (!e.target.matches('.dropbtn')) {
-          var myDropdown = document.getElementById("navDropPages");
-            if (myDropdown.classList.contains('show'))
-            {
-              myDropdown.classList.remove('show');
-            }
-          }
-        }
-    </script>
+
     <!-- FLASH ERROR-->
     <div class="container-fluid" style="min-height:100%; width:80%">
         {% with messages = get_flashed_messages() %}
@@ -107,6 +92,59 @@
         </footer>
     {% endblock %}
 </div>
+
+    <script>
+        function showDropdownContent() {
+          document.getElementById("navDropPages").classList.toggle("show");
+        }
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var showDropDownContent = document.getElementById("navDropPages");
+            if (showDropDownContent.classList.contains('show'))
+            {
+              showDropDownContent.classList.remove('show');
+            }
+          }
+        }
+    </script>
+    <style>
+        .dropdown
+        {
+          float: left;
+          overflow: hidden;
+        }
+        .dropdown .dropbtn {
+          cursor: pointer;
+          font-size: 16px;
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+        .show {
+          display: block;
+        }
+
+    </style>
 
 </body>
 </html>
