@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Output Table{% endblock %}
+{% block title %}Viewable Table{% endblock %}
 
 {% block content %}
-    <h1>Calculator Answer Table</h1>
+    <h1>Calculations Table</h1>
 
     <table id="data" class="table table-striped">
 
@@ -24,27 +24,22 @@
         </tr>
     {% endfor %}
     </tbody>
- <!--       <thead>
-        <tr>
-            <th>Value 1</th>
-            <th>Value 2</th>
-            <th>Value 3</th>
-            <th>Operation</th>
-            <th>Answer</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        % for calculation in calculations %}
-            <tr>
-                <td>{ calculation.value1 }}</td>
-                <td>{ calculation.value2 }}</td>
-                <td>{ calculation.value3 }}</td>
-                <td>{ calculation.operator }}</td>
-                <td>{ calculation.answer }}</td>
-            </tr>
-        % endfor %}
-        </tbody>
--->
     </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns:
+            [
+                {searchable: false},
+                {searchable: false},
+                {searchable: false},
+                null,
+                null
+            ],
+      });
+    });
+  </script>
 {% endblock %}

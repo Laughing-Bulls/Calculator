@@ -32,6 +32,4 @@ class NumTableController(ControllerBase):
         answer_df = Filehandling.retrieve_df_from_file("calculation-output.csv")
         return render_template('numtable.html', title='Answers in a Bootstrap Table',
                                 cols=answer_df.columns.values, row_data=list(answer_df.values.tolist()), zip=zip)
-                                # tables=[answer_df.to_html(classes="data")], header="false", index="false")
-                                # tables=[answer_df.to_html(classes="data")], titles=answer_df.columns.values)
 

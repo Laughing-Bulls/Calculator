@@ -6,5 +6,4 @@ class IndexController(ControllerBase):
     @staticmethod
     def get():
         """ This method will render the index page (home page)"""
-        # flash("ALERT: FLASH TEST"
         return render_template('index.html')
