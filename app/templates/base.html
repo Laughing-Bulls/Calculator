@@ -26,20 +26,41 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/browsers">Early Browsers</a>
-                    <li class="nav-item"><a class="nav-link" href="/builders">Early Builders</a>
-                    <li class="nav-item"><a class="nav-link" href="/isp">Early ISPs</a>
-                    <li class="nav-item"><a class="nav-link" href="/salesmen">Early Salesmen</a>
-                    <li class="nav-item"><a class="nav-link" href="/calculator">Basic Calculator Form</a>
-                    <li class="nav-item"><a class="nav-link" href="/table">Sample Table</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/numtable">Results Table</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" href="../static/ook.html">WTF Form for flask</a></li> -->
-                    <li class="nav-item"><a class="nav-link" href="/oop">Object Oriented Programming</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn" onclick="showDropdownContent()"> Page Navigator
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content" id="navDropPages">
+                                    <a class="nav-link" href="/browsers">Early Browsers</a>
+                                    <a class="nav-link" href="/builders">Early Builders</a>
+                                    <a class="nav-link" href="/isp">Early ISPs</a>
+                                    <a class="nav-link" href="/salesmen">Early Salesmen</a>
+                                    <a class="nav-link" href="/calculator">Python Calculator</a>
+                                    <a class="nav-link" href="/numtable">Results Table</a>
+                                    <a class="nav-link" href="/oop">Object Oriented Programming</a>
+                              </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
+    <script>
+        function showDropdownContent() {
+          document.getElementById("navDropPages").classList.toggle("show");
+        }
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var myDropdown = document.getElementById("navDropPages");
+            if (myDropdown.classList.contains('show'))
+            {
+              myDropdown.classList.remove('show');
+            }
+          }
+        }
+    </script>
     <!-- FLASH ERROR-->
     <div class="container-fluid" style="min-height:100%; width:80%">
         {% with messages = get_flashed_messages() %}
