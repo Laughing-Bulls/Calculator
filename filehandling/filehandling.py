@@ -2,6 +2,7 @@
 import os
 import time
 import pandas as pd
+from datetime import datetime
 
 
 class Filehandling:
@@ -28,6 +29,13 @@ class Filehandling:
     def get_timestamp():
         """ Get UNIX timestamp"""
         return round(time.time())
+
+    @staticmethod
+    def get_datetime():
+        """ Convert UNIX timestamp to date and time"""
+        time_stamp = Filehandling.get_timestamp()
+        date_time = datetime.fromtimestamp(time_stamp, tz=None)
+        return date_time
 
     @staticmethod
     def append_timestamp(filename):
@@ -65,17 +73,8 @@ class Filehandling:
     def log_entry(logpathfile, message):
         """ Makes an entry into the designated log"""
         fileobject = Filehandling.open_file(logpathfile)
-        log_entry = str(Filehandling.get_timestamp()) + ", " + message + '\n'
-        Filehandling.write_to_file(fileobject, log_entry)
-        Filehandling.close_file(fileobject)
-        return True
-
-    @staticmethod
-    def history_entry(logpathfile, message):
-        """ Makes an entry into the history log"""
-        fileobject = Filehandling.open_file(logpathfile)
-        log_entry = message + '\n'
-        Filehandling.write_to_file(fileobject, log_entry)
+        log_line = str(Filehandling.get_datetime()) + ", " + message + '\n'
+        Filehandling.write_to_file(fileobject, log_line)
         Filehandling.close_file(fileobject)
         return True
 

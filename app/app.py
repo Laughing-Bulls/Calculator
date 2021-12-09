@@ -5,7 +5,6 @@ from app.controllers.index_controller import IndexController
 from app.controllers.calculator_controller import CalculatorController
 from app.controllers.oop_controller import OopController
 from app.controllers.four_controller import FourController
-from app.controllers.table_controller import TableController
 from app.controllers.numtable_controller import NumTableController
 from app.controllers.browser_controller import BrowserController
 from app.controllers.isp_controller import ISPController
