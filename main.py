@@ -1,6 +1,5 @@
 """ This is a script to run the Python calculator"""
 from filehandling.watcher import Watchdog
-from csvmanager.make_table import Table
 
 
 def main():
@@ -8,8 +7,7 @@ def main():
 
     print("Calculator program is running. Monitoring for new input files to calculate...")
 
-    Table.create_fake_users(20)
-    # Watchdog.watch()
+    Watchdog.watch()
 
     print("That's all, Folks!")
 
