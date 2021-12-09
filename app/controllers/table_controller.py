@@ -20,7 +20,7 @@ class User(db.Model):
     email = db.Column(db.String(120), index=True)
 
 
-db.create_all()
+# db.create_all()
 
 
 class TableController(ControllerBase):
