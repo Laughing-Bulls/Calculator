@@ -2,12 +2,15 @@
 {% block title %}Viewable Table{% endblock %}
 
 {% block content %}
+
+    <div class="container px-4 px-lg-5">
     <h1>Calculations Table</h1>
 
     <table id="data" class="table table-striped">
 
     <thead>
         <tr>
+            <th>Timestamp</th>
             <th>Value 1</th>
             <th>Value 2</th>
             <th>Value 3</th>
@@ -25,6 +28,7 @@
     {% endfor %}
     </tbody>
     </table>
+        </div>
 {% endblock %}
 
 {% block scripts %}
@@ -44,4 +48,5 @@
       });
     });
   </script>
+
 {% endblock %}
