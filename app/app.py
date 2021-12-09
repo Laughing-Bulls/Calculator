@@ -58,5 +58,5 @@ def salesmen_get():
     return SalesmenController.get()
 
 @app.route("/builders", methods=['GET'])
-def salesmen_get():
+def builders_get():
     return BuildersController.get()
