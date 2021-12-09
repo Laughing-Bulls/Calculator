@@ -58,7 +58,7 @@ class Filehandling:
         else:
             third = str(tuple_in[2])
         entry = str(tuple_in[0]) + ", " + str(tuple_in[1]) + ", " + third + ", " + operation + ", " + result
-        Filehandling.history_entry(logfile, entry)
+        Filehandling.log_entry(logfile, entry)
         return True
 
     @staticmethod
