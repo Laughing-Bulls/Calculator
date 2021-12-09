@@ -98,3 +98,6 @@ value_a,value_b,value_c,oper,ans
 64,1,91,addition,156
 73,2,92,division,0.39673913
 71,92,97,division,0.007956074
+2.0, 2.0, 3.0, addition, 7.0
+0.0, 4.0, 4.0, subtraction, -8.0
+1000.0, 2.0, 33.0, multiplication, 66000.0
