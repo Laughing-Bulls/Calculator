@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Output Table{% endblock %}
+
+{% block content %}
+    <h1>Calculator Answer Table</h1>
+
+    <table id="data" class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Value 1</th>
+            <th>Value 2</th>
+            <th>Value 3</th>
+            <th>Operation</th>
+            <th>Answer</th>
+        </tr>
+        </thead>
+    <tbody>
+    {% for row in row_data %}
+        <tr>
+            {% for col, row in zip(cols, row) %}
+            <td>{{ row|safe }}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+ <!--       <thead>
+        <tr>
+            <th>Value 1</th>
+            <th>Value 2</th>
+            <th>Value 3</th>
+            <th>Operation</th>
+            <th>Answer</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        % for calculation in calculations %}
+            <tr>
+                <td>{ calculation.value1 }}</td>
+                <td>{ calculation.value2 }}</td>
+                <td>{ calculation.value3 }}</td>
+                <td>{ calculation.operator }}</td>
+                <td>{ calculation.answer }}</td>
+            </tr>
+        % endfor %}
+        </tbody>
+-->
+    </table>
+{% endblock %}

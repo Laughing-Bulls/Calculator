@@ -6,6 +6,7 @@ from app.controllers.calculator_controller import CalculatorController
 from app.controllers.oop_controller import OopController
 from app.controllers.four_controller import FourController
 from app.controllers.table_controller import TableController
+from app.controllers.numtable_controller import NumTableController
 
 
 app = Flask(__name__)
@@ -32,6 +33,10 @@ def oop_get():
 @app.route("/table", methods=['GET'])
 def table_get():
     return TableController.get()
+
+@app.route("/numtable", methods=['GET'])
+def numtable_get():
+    return NumTableController.get()
 
 @app.errorhandler(404)
 def page_not_found(e):
