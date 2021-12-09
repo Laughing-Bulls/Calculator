@@ -4,7 +4,7 @@
 {% block content %}
 
     <div class="card text-white bg-secondary my-5 py-4 text-center">
-        <div class="card-body"><p class="text-white m-0">Dude, you have to try this calculator!</p></div>
+        <div class="card-body"><p class="text-white m-0">Enter at least two values to calculate</p></div>
 
         <h1>Web Calculator</h1>
 
@@ -12,9 +12,11 @@
 
             <form action="/calculator" method="POST">
                 <label for="value1" class="col-sm-2 col-form-label">Value 1:</label><br>
-                <input type="text" id="value1" name="value1" value="1"><br>
+                <input type="text" id="value1" name="value1" value=""><br>
                 <label for="value2" class="col-sm-2 col-form-label">Value 2:</label><br>
-                <input type="text" id="value2" name="value2" value="2"><br>
+                <input type="text" id="value2" name="value2" value=""><br>
+                <label for="value3" class="col-sm-2 col-form-label">Value 3:</label><br>
+                <input type="text" id="value2" name="value3" value=""><br>
 
                 <fieldset>
                     <div style="text-align: left; margin-left: 45%">
