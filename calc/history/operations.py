@@ -25,3 +25,14 @@ class Operations:
         """ Create an entry for the logfile or the exception file"""
         entry = filename + ", Record #" + str(record_nm + 1) + ", " + operation + ", " + str(result)
         return entry
+
+    @staticmethod
+    def create_a_history_entry(tuple_in, operation, result):
+        """ Create an entry for the calculation history file"""
+        if len(tuple_in) == 2:
+            third = ""
+        else:
+            third = str(tuple_in[2])
+        entry = str(tuple_in[0]) + ", " + str(tuple_in[1]) + ", " + third + ", " + operation \
+            + ", " + result
+        return entry

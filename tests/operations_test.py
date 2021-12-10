@@ -6,6 +6,7 @@ from calc.history.operations import Operations
 
 # test data
 test_list = [1, 2, 3, 4, 5]
+test_tuple = (6, 7, 8)
 test_df = pd.DataFrame(test_list)
 
 
@@ -32,3 +33,9 @@ def test_create_a_log_entry():
     """ Tests creation of an entry for the logfile"""
     test_entry = Operations.create_a_log_entry("filename.csv", 11, "addition", 13)
     assert test_entry == "filename.csv, Record #12, addition, 13"
+
+
+def test_create_a_history_entry():
+    """ Tests creation of an entry for the calculator history file"""
+    test_entry = Operations.create_a_history_entry(test_tuple, "addition", "15")
+    assert test_entry == "6, 7, 8, addition, 15"

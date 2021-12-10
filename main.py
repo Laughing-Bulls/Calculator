@@ -1,4 +1,5 @@
 """ This is a script to run the Python calculator"""
+# pylint: disable=import-error,no-name-in-module
 from filehandling.watcher import Watchdog
 
 

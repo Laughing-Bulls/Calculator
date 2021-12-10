@@ -3,9 +3,9 @@ import os
 import shutil
 import time
 import pytest
+from datetime import datetime
 import pandas as pd
 from filehandling.filehandling import Filehandling
-
 
 # assign the filepath ./tests/ as the test file path for test-file.csv
 current_working_directory = os.getcwd()
@@ -54,10 +54,52 @@ def test_get_timestamp():
     assert Filehandling.get_timestamp() == round(time.time())
 
 
+def test_get_datetime():
+    """ Test timestamp conversion"""
+    time_stamp = round(time.time())
+    assert Filehandling.get_datetime() == datetime.fromtimestamp(time_stamp, tz=None)
+
+
 def test_append_timestamp_to_filename():
     """ Test append timestamp to filename"""
     newfilename = Filehandling.append_timestamp(TEST_FILE)
     assert newfilename == "test-file_output-" + str(round(time.time())) + ".csv"
+
+
+def test_log_entry(delete_existing_test_file_fixture):
+    """ Tests entry into the designated test file"""
+    # pylint: disable=redefined-outer-name,unused-argument
+    message = "Test log entry"
+    Filehandling.log_entry(testfilepath, message)
+    with open(testfilepath, "r", encoding="utf8") as fileobject:
+        read_data = fileobject.readline()
+    time_stamp = round(time.time())
+    date_time = datetime.fromtimestamp(time_stamp, tz=None)
+    assert read_data == str(date_time) + ", " + message + "\n"
+
+
+def test_write_df_to_output_file(delete_existing_test_file_fixture):
+    """ Test pandas write dataframe to csv file in test folder"""
+    # pylint: disable=redefined-outer-name,unused-argument
+    df_test = pd.DataFrame(test_values)
+    Filehandling.write_df_to_output_file(testfilepath, df_test)
+    test_file_data = pd.read_csv(testfilepath, index_col=0)
+    output = test_file_data.values.tolist()
+    assert output == [[1], [2], [3], [4], [5]]
+
+
+def test_retrieve_df_from_file(delete_existing_test_file_fixture):
+    """ Test pandas read dataframe from csv file"""
+    # pylint: disable=redefined-outer-name,unused-argument
+    df_test = pd.DataFrame(test_values)
+    Filehandling.write_df_to_output_file(testfilepath, df_test)
+    inputpath = current_working_directory + "/input/"
+    shutil.move(testfilepath, inputpath)
+    df_out = Filehandling.retrieve_df_from_file(TEST_FILE)
+    output = df_out.values.tolist()
+    inputfilepath = inputpath + TEST_FILE
+    os.remove(inputfilepath)
+    assert output == [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]
 
 
 def test_open_file(make_test_file_fixture):
@@ -83,37 +125,3 @@ def test_write_to_file(delete_existing_test_file_fixture):
     with open(testfilepath, 'r', encoding="utf8") as fileobject:
         read_data = fileobject.readline()
     assert read_data == "1, 2, 3, 4, 5"
-
-
-def test_log_entry(delete_existing_test_file_fixture):
-    """ Tests entry into the designated test file"""
-    # pylint: disable=redefined-outer-name,unused-argument
-    message = "Test log entry"
-    Filehandling.log_entry(testfilepath, message)
-    with open(testfilepath, "r", encoding="utf8") as fileobject:
-        read_data = fileobject.readline()
-    assert read_data == str(round(time.time())) + ", " + message + "\n"
-
-
-def test_write_df_to_output_file(delete_existing_test_file_fixture):
-    """ Test pandas write dataframe to csv file in test folder"""
-    # pylint: disable=redefined-outer-name,unused-argument
-    df_test = pd.DataFrame(test_values)
-    Filehandling.write_df_to_output_file(testfilepath, df_test)
-    test_file_data = pd.read_csv(testfilepath, index_col=0)
-    output = test_file_data.values.tolist()
-    assert output == [[1], [2], [3], [4], [5]]
-
-
-def test_retrieve_df_from_file(delete_existing_test_file_fixture):
-    """ Test pandas read dataframe from csv file"""
-    # pylint: disable=redefined-outer-name,unused-argument
-    df_test = pd.DataFrame(test_values)
-    Filehandling.write_df_to_output_file(testfilepath, df_test)
-    inputpath = current_working_directory + "/input/"
-    shutil.move(testfilepath, inputpath)
-    df_out = Filehandling.retrieve_df_from_file(TEST_FILE)
-    output = df_out.values.tolist()
-    inputfilepath = inputpath + TEST_FILE
-    os.remove(inputfilepath)
-    assert output == [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5]]

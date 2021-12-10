@@ -31,3 +31,4 @@ timestamp,value_a,value_b,value_c,oper,ans
 12/8/2021 15:32,1000,2,33, multiplication,66000
 2021-12-09 20:56:39, 44.0, 33.0, 22.0, exponent, None
 2021-12-09 20:56:50, 3.0, 2.0, 2.0, exponent, 81.0
+2021-12-09 22:04:29, 55.0, 66.0, 112.0, addition, 233.0

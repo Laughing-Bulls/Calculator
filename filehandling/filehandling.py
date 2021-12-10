@@ -1,8 +1,8 @@
 """ This class contains all the filehandling methods. Directories will be 'input/' and 'output/' """
 import os
 import time
-import pandas as pd
 from datetime import datetime
+import pandas as pd
 
 
 class Filehandling:
@@ -58,20 +58,15 @@ class Filehandling:
         return True
 
     @staticmethod
-    def make_history_log_entry(tuple_in, operation, result):
+    def make_history_log_entry(entry):
         """ Entry for exceptions like divide by zero w/ filename and record number"""
         logfile = Filehandling.make_input_directory() + "calculation-output.csv"
-        if len(tuple_in) == 2:
-            third = ""
-        else:
-            third = str(tuple_in[2])
-        entry = str(tuple_in[0]) + ", " + str(tuple_in[1]) + ", " + third + ", " + operation + ", " + result
         Filehandling.log_entry(logfile, entry)
         return True
 
     @staticmethod
     def log_entry(logpathfile, message):
-        """ Makes an entry into the designated log"""
+        """ Make an entry into the designated log"""
         fileobject = Filehandling.open_file(logpathfile)
         log_line = str(Filehandling.get_datetime()) + ", " + message + '\n'
         Filehandling.write_to_file(fileobject, log_line)

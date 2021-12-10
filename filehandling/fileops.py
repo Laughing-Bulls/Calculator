@@ -71,11 +71,12 @@ class Fileops:
     @staticmethod
     def add_calculation_to_history_file(input_tuple, operation):
         """ add answers to new df and save in results file"""
-        # call the correct operation
+        # get the result from the designated operation
         getattr(Calculator, operation)(input_tuple)
         result = str(Calculator.get_last_result_value())
-        # enter in history file
-        Filehandling.make_history_log_entry(input_tuple, operation, result)
+        # enter result in history file
+        log_entry = Operations.create_a_history_entry(input_tuple, operation, result)
+        Filehandling.make_history_log_entry(log_entry)
         return result
 
     @staticmethod
