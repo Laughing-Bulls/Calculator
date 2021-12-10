@@ -9,6 +9,7 @@ from app.controllers.four_controller import FourController
 from app.controllers.numtable_controller import NumTableController
 from app.controllers.browser_controller import BrowserController
 from app.controllers.isp_controller import ISPController
+from app.controllers.search_controller import SearchController
 from app.controllers.salesmen_controller import SalesmenController
 from app.controllers.builders_controller import BuildersController
 from app.controllers.enablers_controller import EnablersController
@@ -53,6 +54,12 @@ def browsers_get():
 def isp_get():
     """ For isp.html (battle of the ISPs page)"""
     return ISPController.get()
+
+
+@app.route("/search", methods=['GET'])
+def search_get():
+    """ For search.html (battle of the search engines page)"""
+    return SearchController.get()
 
 
 @app.route("/salesmen", methods=['GET'])
