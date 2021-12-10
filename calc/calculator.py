@@ -3,7 +3,7 @@ from calc.calculations.addition import Addition
 from calc.calculations.subtraction import Subtraction
 from calc.calculations.multiplication import Multiplication
 from calc.calculations.division import Division
-from calc.calculations.division import Average
+from calc.calculations.average import Average
 from calc.calculations.exponent import Exponent
 from calc.history.calculations import Calculations
 
