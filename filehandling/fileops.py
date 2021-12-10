@@ -20,7 +20,7 @@ class Fileops:
     @staticmethod
     def determine_operation_from_filename(filename):
         """ decide operation to use from the filename and return it as a string"""
-        defined_ops = ["addition", "subtraction", "multiplication", "division", "exponent"]
+        defined_ops = ["addition", "subtraction", "multiplication", "division", "average", "exponent"]
         operation = next((x for x in defined_ops if x in filename), False)
         return operation
 

@@ -6,46 +6,55 @@
     <div class="card text-white bg-secondary my-5 py-4 text-center">
         <div class="card-body"><p class="text-white m-0">Enter at least two values to calculate</p></div>
 
-        <h1>Web Calculator</h1>
+        <h1>Web Calculator</h1><br><br>
 
         <div class="mb-3 row">
-
-            <form action="/calculator" method="POST">
-                <label for="value1" class="col-sm-2 col-form-label">Value 1:</label><br>
-                <input type="text" id="value1" name="value1" value=""><br>
-                <label for="value2" class="col-sm-2 col-form-label">Value 2:</label><br>
-                <input type="text" id="value2" name="value2" value=""><br>
-                <label for="value3" class="col-sm-2 col-form-label">Value 3:</label><br>
-                <input type="text" id="value2" name="value3" value=""><br>
-
-                <fieldset>
-                    <div style="text-align: left; margin-left: 45%">
-                        <legend>Operation</legend>
-                        <div>
-                            <input type="radio" name="operation" id="addition" value="addition" checked>
-                            <label for="addition">Addition</label>
+            <div class="col-lg-4"><img class="img-fluid rounded mb-4 mb-lg-0"
+                                       src="{{ url_for('static', filename='images/calculator.png') }}" alt="NJIT logo"/>
+            </div>
+            <div class="col-lg-3">
+                <form action="/calculator" method="POST">
+                    <label for="value1" class="col-sm-2 col-form-label">Value 1:</label><br>
+                    <input type="text" id="value1" name="value1" value=""><br>
+                    <label for="value2" class="col-sm-2 col-form-label">Value 2:</label><br>
+                    <input type="text" id="value2" name="value2" value=""><br>
+                    <label for="value3" class="col-sm-2 col-form-label">Value 3:</label><br>
+                    <input type="text" id="value2" name="value3" value=""><br>
+            </div>
+            <div class="col-5">
+                    <fieldset>
+                        <div style="text-align: left; margin-left: 10%">
+                            <legend>Operation</legend>
+                            <div>
+                                <input type="radio" name="operation" id="addition" value="addition" checked>
+                                <label for="addition">Addition</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="operation" id="subtraction" value="subtraction">
+                                <label for="subtraction">Subtraction</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="operation" id="multiplication" value="multiplication">
+                                <label for="multiplication">Multiplication</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="operation" id="division" value="division">
+                                <label for="division">Division (do not divide by zero)</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="operation" id="average" value="average">
+                                <label for="average">Average</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="operation" id="exponent" value="exponent">
+                                <label for="exponent">Exponent (to the power of)</label>
+                            </div>
                         </div>
-                        <div>
-                            <input type="radio" name="operation" id="subtraction" value="subtraction">
-                            <label for="subtraction">Subtraction</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="operation" id="multiplication" value="multiplication">
-                            <label for="multiplication">Multiplication</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="operation" id="division" value="division">
-                            <label for="division">Division (do not divide by zero)</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="operation" id="exponent" value="exponent">
-                            <label for="exponent">Exponent (to the power of)</label>
-                        </div>
-                    </div>
-                </fieldset>
-                <br>
-                <input type="submit" value="Submit">
-            </form>
+                    </fieldset>
+                    <br><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}

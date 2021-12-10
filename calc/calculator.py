@@ -3,6 +3,7 @@ from calc.calculations.addition import Addition
 from calc.calculations.subtraction import Subtraction
 from calc.calculations.multiplication import Multiplication
 from calc.calculations.division import Division
+from calc.calculations.division import Average
 from calc.calculations.exponent import Exponent
 from calc.history.calculations import Calculations
 
@@ -38,6 +39,12 @@ class Calculator:
     def division(tuple_vales: tuple):
         """ divide first number by the following elements"""
         Calculations.add_to_history(Division.create(tuple_vales).getresult())
+        return True
+
+    @staticmethod
+    def average(tuple_vales: tuple):
+        """ compute average of inputted numbers and store the result"""
+        Calculations.add_to_history(Average.create(tuple_vales).getresult())
         return True
 
     @staticmethod

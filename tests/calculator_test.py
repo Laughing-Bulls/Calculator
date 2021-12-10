@@ -27,7 +27,7 @@ def test_calculator_multiply():
 
 
 def test_calculator_divide():
-    """ tests division of two numbers"""
+    """ tests division of numbers"""
     test_tuple = (20.0, 2.0, 2.0)
     Calculator.division(test_tuple)
     assert Calculations.get_history_result() == 5.0
@@ -38,6 +38,13 @@ def test_calculator_dividebyzero():
     test_tuple = (10.0, 0)
     Calculator.division(test_tuple)
     assert Calculations.get_history_result() is None
+
+
+def test_calculator_average():
+    """ tests average feature of calculator"""
+    test_tuple = (10.0, 2.0, 3.0)
+    Calculator.average(test_tuple)
+    assert Calculations.get_history_result() == 5.0
 
 
 def test_calculator_power():
