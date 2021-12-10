@@ -1,9 +1,10 @@
 """Testing the functions of the Filehandling class - using ARRANGE, ACT, ASSERT"""
+# pylint: disable=import-error,no-name-in-module
 import os
 import shutil
 import time
-import pytest
 from datetime import datetime
+import pytest
 import pandas as pd
 from filehandling.filehandling import Filehandling
 

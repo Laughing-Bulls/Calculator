@@ -1,4 +1,5 @@
 """Testing the functions of the FileOps class - using ARRANGE, ACT, ASSERT"""
+# pylint: disable=import-error,no-name-in-module
 from filehandling.fileops import Fileops
 
 

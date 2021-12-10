@@ -5,6 +5,7 @@ from app.controllers.controller import ControllerBase
 
 
 class BrowserController(ControllerBase):
+    """Page controller"""
     @staticmethod
     def get():
         """ This method will render the Browser page"""

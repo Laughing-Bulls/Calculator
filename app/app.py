@@ -22,45 +22,54 @@ def index_get():
     """ For index.html (home page)"""
     return IndexController.get()
 
+
 @app.route("/calculator", methods=['GET'])
 def calculator_get():
     """ For calculator.html (calculator input page)"""
     return CalculatorController.get()
+
 
 @app.route("/calculator", methods=['POST'])
 def calculator_post():
     """ For calculator.html (post to calculator input page)"""
     return CalculatorController.post()
 
+
 @app.route("/numtable", methods=['GET'])
 def numtable_get():
     """ For numtable.html (calculator history table output page)"""
     return NumTableController.get()
+
 
 @app.route("/browsers", methods=['GET'])
 def browsers_get():
     """ For browsers.html (battle of the browsers page)"""
     return BrowserController.get()
 
+
 @app.route("/isp", methods=['GET'])
 def isp_get():
     """ For isp.html (battle of the ISPs page)"""
     return ISPController.get()
+
 
 @app.route("/salesmen", methods=['GET'])
 def salesmen_get():
     """ For salesmen.html (people behind the early Internet - salesmen page)"""
     return SalesmenController.get()
 
+
 @app.route("/builders", methods=['GET'])
 def builders_get():
     """ For builders.html (people behind the early Internet - builders page)"""
     return BuildersController.get()
 
+
 @app.route("/oop", methods=['GET'])
-""" For oop.html (object oriented programming principles page)"""
 def oop_get():
+    """ For oop.html (object oriented programming principles page)"""
     return OopController.get()
+
 
 @app.errorhandler(404)
 def page_not_found():

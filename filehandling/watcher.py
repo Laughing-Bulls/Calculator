@@ -1,8 +1,7 @@
 """ This class contains all the watchdog methods. Watched directory will be 'input/' """
-# pip install watchdog
+# pylint: disable=import-error,no-name-in-module
 import time
 from watchdog.observers import Observer
-# from watchdog.events import LoggingEventHandler
 from watchdog.events import PatternMatchingEventHandler
 from filehandling.fileops import Fileops
 from filehandling.filehandling import Filehandling

@@ -5,6 +5,7 @@ from app.controllers.controller import ControllerBase
 
 
 class FourController(ControllerBase):
+    """Page controller"""
     @staticmethod
     def get():
         """ This method will render a 404 error page (page not found)"""

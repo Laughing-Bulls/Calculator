@@ -5,6 +5,7 @@ from app.controllers.controller import ControllerBase
 
 
 class ISPController(ControllerBase):
+    """Page controller"""
     @staticmethod
     def get():
         """ This method will render the ISP page"""

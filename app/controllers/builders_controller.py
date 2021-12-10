@@ -5,6 +5,7 @@ from app.controllers.controller import ControllerBase
 
 
 class BuildersController(ControllerBase):
+    """Page controller"""
     @staticmethod
     def get():
         """ This method will render the Builders page"""

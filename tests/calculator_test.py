@@ -46,8 +46,15 @@ def test_calculator_power():
     Calculator.exponent(test_tuple)
     assert Calculations.get_history_result() == 81.0
 
+
 def test_calculator_power_too_high():
     """ tests calculation of one number to the power of another"""
     test_tuple = (30.0, 20.0, 20.0)
     Calculator.exponent(test_tuple)
     assert Calculations.get_history_result() is None
+
+
+def test_get_last_result_value():
+    """ tests calculation of one number to the power of another"""
+    Calculations.add_to_history(5.0)
+    assert Calculator.get_last_result_value() == 5.0

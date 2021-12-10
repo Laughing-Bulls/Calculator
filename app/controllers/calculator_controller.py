@@ -1,11 +1,12 @@
 """Flask web controller for the Web Calculator page"""
 # pylint: disable=import-error,no-name-in-module
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash
 from app.controllers.controller import ControllerBase
 from filehandling.fileops import Fileops
 
 
 class CalculatorController(ControllerBase):
+    """Page controller"""
     @staticmethod
     def post():
         """ This method renders the calculator page following a post command - data inputted"""
@@ -49,8 +50,9 @@ class CalculatorController(ControllerBase):
 
             return render_template('result.html', value1=value1, value2=value2, value3=value3,
                                    operation=operation, result=result, error=error)
-        else:
-            return render_template('calculator.html', error=error)
+
+        return render_template('calculator.html', error=error)
+
 
     @staticmethod
     def get():

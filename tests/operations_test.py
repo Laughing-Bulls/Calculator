@@ -12,8 +12,8 @@ test_df = pd.DataFrame(test_list)
 
 def test_convert_list_to_tuple():
     """ Tests conversion of a list into a tuple"""
-    test_tuple = Operations.convert_list_to_tuple(test_list)
-    assert test_tuple == (1, 2, 3, 4, 5)
+    tuple_test = Operations.convert_list_to_tuple(test_list)
+    assert tuple_test == (1, 2, 3, 4, 5)
 
 
 def test_convert_df_to_array():

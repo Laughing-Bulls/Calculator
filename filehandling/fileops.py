@@ -1,5 +1,5 @@
 """ This is the script that directs the program what to do with the new file"""
-# pylint: disable=import-error
+# pylint: disable=import-error,no-name-in-module
 from calc.history.operations import Operations
 from calc.calculator import Calculator
 from calc.history.calculations import Calculations
