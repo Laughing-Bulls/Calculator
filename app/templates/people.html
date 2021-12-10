@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}People of the Internet{% endblock %}
+
+{% block content %}
+
+    <!-- TEMPLATE Page Content-->
+    <div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-8"><img class="img-fluid rounded mb-4 mb-lg-0"
+                                       src="{{ url_for('static', filename='images/construction.jpg') }}"
+                                       alt="jpeg image of RPPC RAILROAD CONSTRUCTION Track Laying Train & Hard Working Men Laying Down FLAT BOTTOM STEEL RAILS Sleepers & Wood Railroad Ties by hand Location Railroad Line & Photographer UNK by UpNorth Memories - Don Harrison is licensed under CC BY-NC-ND 2.0">
+
+            </div>
+            <div class="col-lg-4">
+                <h1 class="font-weight-light">THE PEOPLE WHO BUILT THE INTERNET</h1>
+                <h4>Meet the inventors, engineers and entrepreneurs that were responsible for creating the early
+                    Internet.</h4>
+            </div>
+        </div>
+
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title"><a href="/builders">THE BUILDERS</a></h2>
+                        <p class="card-text">Meet the designers and engineers of the early Internet.</p>
+
+                        <img src="{{ url_for('static', filename='images/builders.jpg') }}"
+                             alt="jpeg image of a construction site"/>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/builders">Explore</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title"><a href="/enablers">THE ENABLERS</a></h2>
+                        <p class="card-text">Meet people who developed the tools that fueled the growth of the
+                            Internet.</p>
+                        <img src="{{ url_for('static', filename='images/enablers.jpg') }}"
+                             alt="jpeg image of hand plugging in a cable"/>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/enablers">Explore</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title"><a href="/salesmen">THE SALESMEN</a></h2>
+                        <p class="card-text">Meet the entrepreneurs who identified and successfully established new uses
+                            for the Internet.</p>
+                        <img src="{{ url_for('static', filename='images/salesmen.jpg') }}"
+                             alt="jpeg image of man holding a shopping bag"/>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/salesmen">Explore</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

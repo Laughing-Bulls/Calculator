@@ -7,6 +7,8 @@ from app.controllers.calculator_controller import CalculatorController
 from app.controllers.oop_controller import OopController
 from app.controllers.four_controller import FourController
 from app.controllers.numtable_controller import NumTableController
+from app.controllers.battle_controller import BattleController
+from app.controllers.people_controller import PeopleController
 from app.controllers.browser_controller import BrowserController
 from app.controllers.isp_controller import ISPController
 from app.controllers.search_controller import SearchController
@@ -44,6 +46,12 @@ def numtable_get():
     return NumTableController.get()
 
 
+@app.route("/battle", methods=['GET'])
+def battle_get():
+    """ For battle.html (battles of the Internet z-page)"""
+    return BattleController.get()
+
+
 @app.route("/browsers", methods=['GET'])
 def browsers_get():
     """ For browsers.html (battle of the browsers page)"""
@@ -60,6 +68,12 @@ def isp_get():
 def search_get():
     """ For search.html (battle of the search engines page)"""
     return SearchController.get()
+
+
+@app.route("/people", methods=['GET'])
+def people_get():
+    """ For people.html (people of the Internet z-page)"""
+    return PeopleController.get()
 
 
 @app.route("/salesmen", methods=['GET'])
