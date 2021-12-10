@@ -3,22 +3,26 @@
 
 {% block content %}
     <div class="container px-4 px-lg-5">
-        <br><h1 style="width:100%;rem;text-align: center">The Builders</h1>
-        <br><h2 style="width:100%;font-size: 1.5rem;text-align: left;padding:inherit">
+        <br>
+        <h1 style="width:100%;rem;text-align: center">The People of the Internet - The Builders</h1>
+        <br>
+        <h2 style="width:100%;font-size: 1.5rem;text-align: left;padding:inherit">
             These are some of the people responsible for the design and construction of the early Internet. Without
             their hard work and vision, you wouldn’t be reading this right now!
         </h2><br>
 
         <div class="container">
-
             <div class="row mt-3">
-                <div class="col-4">
+                <div class="col-2">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/baran.jpg') }}"
+                         alt="jpg picture of Paul Baran">
+                </div>
+                <div class="col">
                     <h1>
                         Paul Baran
                     </h1>
-                    <img src="{{ url_for('static', filename='images/baran.jpg') }}"
-                         alt="jpg picture of Paul Baran">
-                    <br><br><p>
+                    <br><br>
+                    <p>
                         In a quest to design a communications system that would survive an enemy attack better than the
                         centralized telephone network, Paul A. Baran theorized a “distributed packet-switched” network.
                         In 1964, as a RAND Corporation researcher, Baran published papers describing a detailed
@@ -28,13 +32,16 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-4">
+            <div class="row mt-4">
+                <div class="col-2">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/lee.jpg') }}"
+                         alt="jpg picture of Tim Berners-Lee">
+                </div>
+                <div class="col">
                     <h1>
                         Tim Berners-Lee
                     </h1>
-                    <img src="{{ url_for('static', filename='images/lee.jpg') }}"
-                         alt="jpg picture of Tim Berners-Lee">
+                    <br><br>
                     <p>
                         A physicist and computer scientist, Timothy John Berners-Lee worked at CERN, , the European
                         Organization for Nuclear Research. In 1989, he invented the World Wide Web, a project using
@@ -45,13 +52,16 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-4">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/cerf.jpg') }}"
+                         alt="jpg picture of Vint Cerf">
+                </div>
+                <div class="col">
                     <h1>
                         Vint Cerf
                     </h1>
-                    <img src="{{ url_for('static', filename='images/cerf.jpg') }}"
-                         alt="jpg picture of Vint Cerf">
+                    <br><br>
                     <p>
                         Along with Bob Kahn, Vinton G. Cerf is considered one of the “fathers of the Internet”. The two
                         partners came up with the TCP/IP protocol in 1974, working on Leonard Kleinrock's networking
@@ -61,13 +71,16 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-4">
+            <div class="row mt-4">
+                <div class="col-3">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/kahn.jpg') }}"
+                         alt="jpg picture of Bob Kahn">
+                </div>
+                <div class="col">
                     <h1>
                         Bob Kahn
                     </h1>
-                    <img src="{{ url_for('static', filename='images/kahn.jpg') }}"
-                         alt="jpg picture of Bob Kahn">
+                    <br>
                     <p>
                         In 1974, Robert E. Kahn invented the TCP/IP protocols along with his partner Vint Cerf. Both
                         helped develop ARPAnet, and extended that knowledge to LANs, WANs and other connected networks.
@@ -76,13 +89,16 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-4">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/kleinrock.jpg') }}"
+                         alt="jpg picture of Leonard Kleinrock">
+                </div>
+                <div class="col">
                     <h1>
                         Leonard Kleinrock
                     </h1>
-                    <img src="{{ url_for('static', filename='images/kleinrock.jpg') }}"
-                         alt="jpg picture of Leonard Kleinrock">
+                    <br>
                     <p>
                         In 1961, Leonard Kleinrock introduced queuing theory for data packets. Demand access and
                         distributed control. Working at UCLA, he oversaw a team that connected the first node to ARPAnet
@@ -91,13 +107,16 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-4">
+            <div class="row mt-4">
+                <div class="col-2">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/licklider.jpg') }}"
+                         alt="jpg picture of JCR Licklider">
+                </div>
+                <div class="col">
                     <h1>
                         JCR Licklider
                     </h1>
-                    <img src="{{ url_for('static', filename='images/licklider.jpg') }}"
-                         alt="jpg picture of JCR Licklider">
+                    <br>
                     <p>
                         Joseph Carl Robnett Licklider was a psychologist and professor at MIT in the 1950s. In 1962, he
                         developed the idea of a global digital network in a series of papers describing the
@@ -107,13 +126,16 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-4">
+            <div class="row mt-4">
+                <div class="col-2">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/metcalfe.jpg') }}"
+                         alt="jpg picture of Robert Metcalfe">
+                </div>
+                <div class="col">
                     <h1>
                         Robert Metcalfe
                     </h1>
-                    <img src="{{ url_for('static', filename='images/metcalfe.jpg') }}"
-                         alt="jpg picture of Robert Metcalfe">
+                    <br>
                     <p>
                         Robert Melancton Metcalfe is considered the inventor of Ethernet and was a founder of 3Com. He
                         worked on ARPAnet at MIT and later served as a researcher at Xerow PARC (Palo Alto Research
@@ -124,13 +146,16 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-4">
+            <div class="row mt-4">
+                <div class="col-2">
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/roberts.jpg') }}"
+                         alt="jpg picture of Larry Roberts">
+                </div>
+                <div class="col">
                     <h1>
                         Larry Roberts
                     </h1>
-                    <img src="{{ url_for('static', filename='images/roberts.jpg') }}"
-                         alt="jpg picture of Larry Roberts">
+                    <br>
                     <p>
                         Lawrence G. Roberts was a program manager at ARPA (Advanced Research Projects Agency), where he
                         worked on Paul Baran’s idea for ARPAnet, the first distributed packet switched network. He later
@@ -139,34 +164,23 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-4">
+
+                    <img class="img-fluid" src="{{ url_for('static', filename='images/taylor.jpg') }}"
+                         alt="jpg picture of Bob Taylor">
+                <br><br>
+                </div>
+                <div class="col">
                     <h1>
                         Bob Taylor
                     </h1>
-                    <img src="{{ url_for('static', filename='images/taylor.jpg') }}"
-                         alt="jpg picture of Bob Taylor">
+                    <br>
                     <p>
                         Robert W. Taylor was a director of Information Processing at ARPA, the Advanced Research
                         Projects Agency. In 1969, Taylor convinced the agency to construct a distributed computer
                         network. ARPAnet, as it was known, was the grandfather of the Internet. Taylor later founded the
                         Computer Science Laboratory of Xerox PARC (Palo Alto Research Center).
-                    </p><br><br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-4">
-                    <h1>
-                        Ray Tomlinson
-                    </h1>
-                    <img src="{{ url_for('static', filename='images/tomlinson.jpg') }}"
-                         alt="jpg picture of Ray Tomlinson">
-                    <p>
-                        Raymond Samuel Tomlinson was the computer programmer who invented email. His employer, Bolt,
-                        Beranek and Newman, worked on projects for ARPAnet, the predecessor of the Internet. In 1971, he
-                        sent the first email, including an “@” symbol to designate an address, to another computer
-                        across the room.
                     </p><br><br>
                 </div>
             </div>
