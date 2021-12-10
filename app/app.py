@@ -11,6 +11,8 @@ from app.controllers.browser_controller import BrowserController
 from app.controllers.isp_controller import ISPController
 from app.controllers.salesmen_controller import SalesmenController
 from app.controllers.builders_controller import BuildersController
+from app.controllers.enablers_controller import EnablersController
+
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -63,6 +65,12 @@ def salesmen_get():
 def builders_get():
     """ For builders.html (people behind the early Internet - builders page)"""
     return BuildersController.get()
+
+
+@app.route("/enablers", methods=['GET'])
+def enablers_get():
+    """ For enablers.html (people behind the early Internet - enablers page)"""
+    return EnablersController.get()
 
 
 @app.route("/oop", methods=['GET'])
