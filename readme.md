@@ -5,8 +5,7 @@ Team submission: Scott Daniel & Sebastian Fine
 Youtube Video (Unlisted) Recording here:
 https://youtu.be/CxYLhGVr7mg
 
-<h4> Added "beautiful tables" to the calculator output. </h4>
-<h4> Execution screenshots: </h4> 
+<h4> pytest/pylint screenshot: </h4> 
 
-![screenshot4.png](https://github.com/Laughing-Bulls/Calculator/blob/tables/screenshot4.png)
+![pytest-screenshot-2.png](https://github.com/Laughing-Bulls/Calculator/blob/SD-dev/pytest-screenshot-2.png)
   
