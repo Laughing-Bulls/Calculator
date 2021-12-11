@@ -4,7 +4,6 @@ Team submission:
 Scott Daniel & Sebastian Fine
 
 <br><h4>Video Recording: </h4>
-<br>
 <h4> Google Drive Link: </h4>
 https://drive.google.com/file/d/1N7NaoAWmAeRxdNibLKvLJtW_hQe2MxHR/view
 <br>
