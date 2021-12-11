@@ -19,13 +19,17 @@
             </tr>
             </thead>
             <tbody>
-            {% for row in row_data %}
-                <tr>
-                    {% for col, row in zip(cols, row) %}
-                        <td>{{ row|safe }}
-                    {% endfor %}
-                </tr>
-            {% endfor %}
+            {% if row_data %}
+                {% for row in row_data %}
+                    <tr>
+                        {% for col, row in zip(cols, row) %}
+                            <td>{{ row|safe }}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <br><h3>There are no calculations yet</h3><br><br>
+            {% endif %}
             </tbody>
         </table>
     </div>

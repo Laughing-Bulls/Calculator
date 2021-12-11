@@ -3,6 +3,7 @@ import os
 import time
 from datetime import datetime
 import pandas as pd
+from calc.history.operations import Operations
 
 
 class Filehandling:
@@ -58,9 +59,10 @@ class Filehandling:
         return True
 
     @staticmethod
-    def make_history_log_entry(entry):
+    def make_history_log_entry(input_tuple, operation):
         """ Entry for exceptions like divide by zero w/ filename and record number"""
-        logfile = Filehandling.make_input_directory() + "calculation-output.csv"
+        logfile = Filehandling.make_input_directory() + "calculation-history.csv"
+        entry = Operations.create_a_history_entry(input_tuple, operation)
         Filehandling.log_entry(logfile, entry)
         return True
 
@@ -75,14 +77,14 @@ class Filehandling:
 
     @staticmethod
     def retrieve_df_from_file(filename):
-        """ Read data from file and return it"""
+        """ Read data from file using pandas and return it as a dataframe"""
         filestring = Filehandling.make_input_directory() + filename
         df_out = pd.read_csv(filestring, index_col=None)
         return df_out
 
     @staticmethod
     def write_df_to_output_file(pathname, df_in):
-        """ Write dataframe to csv file in output folder"""
+        """ Use pandas to write dataframe to csv file in designated file"""
         df_in.to_csv(pathname)
         return True
 
