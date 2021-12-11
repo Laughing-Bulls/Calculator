@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Viewable Table{% endblock %}
+
+{% block content %}
+
+    <div class="container px-4 px-lg-5">
+        <h1>Calculations Table</h1>
+
+        <table id="data" class="table table-striped">
+
+            <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Value 1</th>
+                <th>Value 2</th>
+                <th>Value 3</th>
+                <th>Operation</th>
+                <th>Answer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if row_data %}
+                {% for row in row_data %}
+                    <tr>
+                        {% for col, row in zip(cols, row) %}
+                            <td>{{ row|safe }}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <br><h3>There are no calculations yet</h3><br><br>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#data').DataTable({
+                "order": [[0, 'desc']],
+                columns:
+                    [
+                        {searchable: true, orderable: true},
+                        {searchable: false},
+                        {searchable: false},
+                        {searchable: false},
+                        null,
+                        null
+                    ],
+            });
+        });
+    </script>
+
+{% endblock %}

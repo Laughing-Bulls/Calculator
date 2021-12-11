@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Internet Battles{% endblock %}
+
+{% block content %}
+
+    <!-- TEMPLATE Page Content-->
+    <div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-9"><img class="img-fluid rounded mb-4 mb-lg-0"
+                                       src="{{ url_for('static', filename='images/battle.jpg') }}"
+                                       alt="Image of Napoleonic battle"/>
+            </div>
+            <div class="col-lg-3">
+                <h1 class="font-weight-light">THE BATTLES OF THE EARLY INTERNET</h1>
+                <h4>The early Internet was fiercely competitive, as players strived for dominance. Learn about the
+                    players in some of those early battles.</h4>
+            </div>
+        </div>
+
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title"><a href="/isp">ISP BATTLES</a></h2>
+                        <p class="card-text">Before the World Wide Web, many private networks were established. These
+                            are
+                            the Internet Service Providers (ISPs) that tried to capture the mass market.</p>
+
+                        <img src="{{ url_for('static', filename='images/isps.jpg') }}"
+                             alt="jpeg image of isp installation disks"/>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/isp">Explore</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title"><a href="/browsers">BROWSER BATTLES</a></h2>
+                        <p class="card-text">Once the World Wide Web was established, users needed a way to access it.
+                            These are the companies that battled to own the front end of the user experience.</p>
+                        <img src="{{ url_for('static', filename='images/browers.jpg') }}"
+                             alt="jpeg image of various browsers"/>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/browsers">Explore</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title"><a href="/search">SEARCH BATTLES</a></h2>
+                        <p class="card-text">As the amount of content on the Web exploded, users needed a way to
+                            navigate it. These companies used technological and other means to create a road map.</p>
+                        <img src="{{ url_for('static', filename='images/search.jpg') }}"
+                             alt="jpeg image of search logos"/>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/search">Explore</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

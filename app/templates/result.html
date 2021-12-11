@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+
+{% block content %}
+
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">The Python Calculator</p></div>
+        <h1>Calculation Result</h1>
+
+        <div style="text-align: left; margin-left: 45%">
+            <strong>Value 1: </strong> {{ value1 }} <br>
+            <strong>Value 2: </strong> {{ value2 }} <br>
+            <strong>Value 3: </strong> {{ value3 }} <br>
+            <strong>Operation: </strong> {{ operation }} <br>
+            <strong>Result: </strong> {{ result }}
+        </div>
+
+        <div class="container px-4 px-lg-5 text-center">
+            <br>
+            <a class="btn btn-success btn-lg" href="/calculator">Calculate Again!</a>
+            <br>
+            <br>
+            <a class="btn btn-success" href="/numtable">See Your Calculation History</a>
+            <br>
+            <br>
+        </div>
+    </div>
+{% endblock %}

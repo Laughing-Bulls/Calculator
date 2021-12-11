@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}404 Error{% endblock %}
+
+{% block content %}
+
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">Dude, This is not a page!</p></div>
+
+        <h1>404 ERROR</h1>
+        {% if error %}
+            <div class="alert alert-danger error" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

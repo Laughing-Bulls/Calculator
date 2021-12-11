@@ -6,8 +6,12 @@ class Exponent(Calculation):
     """ values come from the calculation parent class"""
 
     def getresult(self):
-        """ Raise first element to the power of second one, continue with subsequent ones"""
+        """ Raise first element to the power of subsequent ones. Return None if too big"""
         exponential = self.values[0]
-        for value in self.values[1:]:
-            exponential = exponential ** value
+        try:
+            for value in self.values[1:]:
+                exponential = exponential ** value
+        except OverflowError:
+            print("Exponent produced number too big to process")
+            return None
         return exponential

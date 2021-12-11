@@ -1,6 +1,5 @@
 """Testing the functions of the History cache - using ARRANGE, ACT, ASSERT"""
 import pytest
-# import pprint: allows print during test
 from calc.history.calculations import Calculations
 
 

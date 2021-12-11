@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+    <!-- TEMPLATE Page Content-->
+    <div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-1">
+            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                                       src="{{ url_for('static', filename='images/njit-logo.png') }}" alt="NJIT logo"/>
+            </div>
+            <div class="col-lg-5">
+                <h1 class="font-weight-light">The Python Calculator</h1>
+                <p>This is a web-based calculator project.
+                    It is programmed in Python and delivered over html using standard Bootstrap components.</p>
+                <a class="btn btn-primary" href="/calculator">TRY THE CALCULATOR!</a>
+            </div>
+        </div>
+        <!-- Call to Action-->
+        <div class="card text-white bg-secondary my-2 py-2 text-center">
+            <div class="card-body"><h4 class="text-white m-0">Try the Python Calculator, and learn more about programmng
+                and the history of the Internet!</h4></div>
+        </div>
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">The Battles for the Early Internet</h2>
+                        <p class="card-text">These were some of the players in the early Internet battles.</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/battle">EXPLORE</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">The People of the Early Internet</h2>
+                        <p class="card-text">Meet the people who were instrumental in developing the Internet</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/people">EXPLORE</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Object Oriented Programming</h2>
+                        <p class="card-text">Learn the fundamental concepts of Object Oriented Programming.</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="/oop">EXPLORE</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
