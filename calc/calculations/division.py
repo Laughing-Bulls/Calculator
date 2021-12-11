@@ -12,6 +12,5 @@ class Division(Calculation):
             if value != 0:
                 quotient /= value
             else:
-                print("Division by zero is not allowed.")
                 return None
         return quotient

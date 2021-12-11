@@ -12,7 +12,7 @@ class Operations:
     @staticmethod
     def convert_df_to_array(df_in):
         """ Convert a dataframe into an array"""
-        return df_in.values
+        return df_in.to_numpy(na_value="")
 
     @staticmethod
     def add_answer_column_to_df(df_in, answers):
@@ -27,12 +27,20 @@ class Operations:
         return entry
 
     @staticmethod
-    def create_a_history_entry(tuple_in, operation, result):
+    def create_a_history_entry(tuple_in, operation):
         """ Create an entry for the calculation history file"""
         if len(tuple_in) == 2:
             third = ""
         else:
             third = str(tuple_in[2])
-        entry = str(tuple_in[0]) + ", " + str(tuple_in[1]) + ", " + third + ", " + operation \
-            + ", " + result
+        entry = str(tuple_in[0]) + "," + str(tuple_in[1]) + "," + third + "," + operation
         return entry
+
+    @staticmethod
+    def format_with_commas(num):
+        """ Return numerical value as a string formatted with commas"""
+        if num == None:
+            number_string = "Error"
+        else:
+            number_string = "{:,}".format(num)
+        return number_string

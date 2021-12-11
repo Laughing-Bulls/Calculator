@@ -69,18 +69,41 @@ class Fileops:
         return True
 
     @staticmethod
-    def add_calculation_to_history_file(input_tuple, operation):
-        """ add answers to new df and save in results file"""
-        # get the result from the designated operation
+    def get_calculation_result(input_tuple, operation):
+        """ perform calculation from the designated operation and return result"""
         getattr(Calculator, operation)(input_tuple)
-        result = str(Calculator.get_last_result_value())
-        # enter result in history file
-        log_entry = Operations.create_a_history_entry(input_tuple, operation, result)
-        Filehandling.make_history_log_entry(log_entry)
+        result = Operations.format_with_commas(Calculator.get_last_result_value())
         return result
 
     @staticmethod
-    def calculate_file(filename):
+    def calculate_history_file(filename):
+        """ These are the designated steps to perform on the history file before it is rendered"""
+        # 1. read data from history file and put it into a df
+        df_history = Filehandling.retrieve_df_from_file(filename)
+        # 2. convert it to an array
+        vals = Operations.convert_df_to_array(df_history)
+        # 3. perform specified operation on history values by looping through array
+        answers = []
+        end_column = vals.shape[1] - 1
+        for i in range(vals.shape[0]):
+            inputs = []
+            for j in range(1, end_column):
+                # if not null, add number to list
+                try:
+                    float(vals[i, j])
+                    inputs.append(vals[i, j])
+                except:
+                    pass
+            # make numbers a tuple and perform operation
+            input_tuple = Operations.convert_list_to_tuple(inputs)
+            operation = vals[i, end_column]
+            answers.append(Fileops.get_calculation_result(input_tuple, operation))
+        # 4. append the answers to the history df and return it
+        df_answers = Operations.add_answer_column_to_df(df_history, answers)
+        return df_answers
+
+    @staticmethod
+    def calculate_input_file(filename):
         """ These are the designated steps to perform on new file"""
 
         # 1. determine operation to be conducted

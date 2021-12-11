@@ -18,7 +18,7 @@ class Watchdog:
         # remove path, return only filename
         filename = new_file.split('/')[-1]
         # call Fileops to perform all specified operations on the file
-        Fileops.calculate_file(filename)
+        Fileops.calculate_input_file(filename)
         return True
 
     @staticmethod
